@@ -1,0 +1,101 @@
+Command line arguments: -i data/GCF_009858895.2_ASM985889v3_genomic.fna -o test -d sarscov2
+Current working directory: /home/taltman/repos/darth
+Using SARSCoV2 database version 20200430
+alignment_module                                  exonerate (defaults)
+alignment_score_factor                            1.0 (/home/taltman/repos/darth/third-party/VIGOR_DB/Reference_DBs/sarscov2_db.ini)
+circular_genome                                   false (commandline)
+exonerate_path                                    /home/taltman/.miniconda3/bin/exonerate (/home/taltman/repos/darth/third-party/VIGOR4/vigor-4.1.20200430-122814-96585d9/config/vigor.ini)
+frameshift_sensitivity                            1 (commandline)
+leakystop_notFound_score                          80.0 (defaults)
+leakystop_score_factor                            1.0 (/home/taltman/repos/darth/third-party/VIGOR_DB/Reference_DBs/sarscov2_db.ini)
+locus_tag                                         vigor_ (commandline)
+mature_pep_mincoverage                            50.0 (defaults)
+mature_pep_minidentity                            25.0 (defaults)
+mature_pep_minsimilarity                          40.0 (defaults)
+max_aa_overlap                                    10 (defaults)
+max_align_merge_aa_gap                            10 (defaults)
+max_intron_size                                   2500 (defaults)
+max_nt_overlap                                    30 (defaults)
+min_missing_AA_size                               10 (defaults)
+min_pseudogene_coverage                           80.0 (defaults)
+min_pseudogene_identity                           70.0 (defaults)
+min_pseudogene_similarity                         80.0 (defaults)
+min_seq_gap_length                                20 (defaults)
+output_directory                                  /home/taltman/repos/darth (commandline)
+output_formats                                    [ALN, CDS, PEP, GFF3, TBL] (defaults)
+output_prefix                                     test (commandline)
+reference_database_file                           /home/taltman/repos/darth/third-party/VIGOR_DB/Reference_DBs/sarscov2_db (commandline)
+reference_database_path                           /home/taltman/repos/darth/third-party/VIGOR_DB/Reference_DBs (/home/taltman/repos/darth/third-party/VIGOR4/vigor-4.1.20200430-122814-96585d9/config/vigor.ini)
+splicing_score_factor                             1.0 (/home/taltman/repos/darth/third-party/VIGOR_DB/Reference_DBs/sarscov2_db.ini)
+start_codon_search_window                         50 (defaults)
+start_codons                                      [ATG] (defaults)
+start_score_factor                                1.0 (/home/taltman/repos/darth/third-party/VIGOR_DB/Reference_DBs/sarscov2_db.ini)
+stop_codon_search_window                          50 (defaults)
+stop_score_factor                                 1.0 (/home/taltman/repos/darth/third-party/VIGOR_DB/Reference_DBs/sarscov2_db.ini)
+temporary_directory                               /dev/shm (/home/taltman/repos/darth/third-party/VIGOR4/vigor-4.1.20200430-122814-96585d9/config/vigor.ini)
+verbose                                           false (commandline)
+Getting alignments for NC_045512.2
+12 alignment(s) found for sequence NC_045512.2
+12 candidate model(s) found for sequence NC_045512.2
+12 gene model(s) found for sequence NC_045512.2
+finding alignments in /home/taltman/repos/darth/third-party/VIGOR_DB/Reference_DBs/sarscov2_orf1a_mp for seq YP_009725295.1
+Best matches:
+id                       len     sub           qry         %id      %sim     %cov     comment
+YP_009725312.1           0013    4392-4404     0000-0012   1.0000   1.0000   1.0000   product="nsp11"
+
+finding alignments in /home/taltman/repos/darth/third-party/VIGOR_DB/Reference_DBs/sarscov2_orf1ab_mp for seq YP_009724389.1
+Best matches:
+id                       len     sub           qry         %id      %sim     %cov     comment
+YP_009725297.1           0180    0000-0179     0000-0179   1.0000   1.0000   1.0000   product="leader protein"
+YP_009725298.1           0638    0180-0817     0000-0637   1.0000   1.0000   1.0000   product="nsp2"
+YP_009725299.1           1945    0818-2762     0000-1944   1.0000   1.0000   1.0000   product="nsp3"
+YP_009725300.1           0500    2763-3262     0000-0499   1.0000   1.0000   1.0000   product="nsp4"
+YP_009725301.1           0306    3263-3568     0000-0305   1.0000   1.0000   1.0000   product="3C-like proteinase"
+YP_009725302.1           0290    3569-3858     0000-0289   1.0000   1.0000   1.0000   product="nsp6"
+YP_009725303.1           0083    3859-3941     0000-0082   1.0000   1.0000   1.0000   product="nsp7"
+YP_009725304.1           0198    3942-4139     0000-0197   1.0000   1.0000   1.0000   product="nsp8"
+YP_009725305.1           0113    4140-4252     0000-0112   1.0000   1.0000   1.0000   product="nsp9"
+YP_009725306.1           0139    4253-4391     0000-0138   1.0000   1.0000   1.0000   product="nsp10"
+YP_009725307.1           0932    4392-5323     0000-0931   1.0000   1.0000   1.0000   product="RNA-dependent RNA polymerase"
+YP_009725308.1           0601    5324-5924     0000-0600   1.0000   1.0000   1.0000   product="helicase"
+YP_009725309.1           0527    5925-6451     0000-0526   1.0000   1.0000   1.0000   product="3'-to-5' exonuclease"
+YP_009725310.1           0346    6452-6797     0000-0345   1.0000   1.0000   1.0000   product="endoRNAse"
+YP_009725311.1           0298    6798-7095     0000-0297   1.0000   1.0000   1.0000   product="2'-O-ribose methyltransferase"
+
+
+Sequence                        Length    Genes     Pseudogenes    CDS_Bases      Peptide_Bases  %Ref_Identity  %Ref_Similarity  %Ref_Coverage  Ref_DB              
+NC_045512.2                     29903     12        0              42447          14149          100.00         100.00           100.00         /home/taltman/repos/darth/third-party/VIGOR_DB/Reference_DBs/sarscov2_db
+
+
+
+gene_id             %id       %sim      %cov      %t5       %gap      %t3       start..stop         pep_size  ref_size  ref_id              definition          
+NC_045512.2.1       100.00    100.00    100.00    0.0       0.0       0.0       266..13483          4405      4405      YP_009725295.1      ORF1a | ORF1a polyprotein
+NC_045512.2.1.1     100.00    100.00    100.00    0.0       0.0       0.0       13442..13480        13        13        YP_009725312.1      ORF1a|nsp11         
+NC_045512.2.2       100.00    100.00    100.00    0.0       0.0       0.0       266..13468          
+                                                                                13468..21555        7096      7096      YP_009724389.1      ORF1ab | ORF1ab polyprotein
+NC_045512.2.2.1     100.00    100.00    100.00    0.0       0.0       0.0       266..805            180       180       YP_009725297.1      ORF1ab|leader protein
+NC_045512.2.2.2     100.00    100.00    100.00    0.0       0.0       0.0       806..2719           638       638       YP_009725298.1      ORF1ab|nsp2         
+NC_045512.2.2.3     100.00    100.00    100.00    0.0       0.0       0.0       2720..8554          1945      1945      YP_009725299.1      ORF1ab|nsp3         
+NC_045512.2.2.4     100.00    100.00    100.00    0.0       0.0       0.0       8555..10054         500       500       YP_009725300.1      ORF1ab|nsp4         
+NC_045512.2.2.5     100.00    100.00    100.00    0.0       0.0       0.0       10055..10972        306       306       YP_009725301.1      ORF1ab|3C-like proteinase
+NC_045512.2.2.6     100.00    100.00    100.00    0.0       0.0       0.0       10973..11842        290       290       YP_009725302.1      ORF1ab|nsp6         
+NC_045512.2.2.7     100.00    100.00    100.00    0.0       0.0       0.0       11843..12091        83        83        YP_009725303.1      ORF1ab|nsp7         
+NC_045512.2.2.8     100.00    100.00    100.00    0.0       0.0       0.0       12092..12685        198       198       YP_009725304.1      ORF1ab|nsp8         
+NC_045512.2.2.9     100.00    100.00    100.00    0.0       0.0       0.0       12686..13024        113       113       YP_009725305.1      ORF1ab|nsp9         
+NC_045512.2.2.10    100.00    100.00    100.00    0.0       0.0       0.0       13025..13441        139       139       YP_009725306.1      ORF1ab|nsp10        
+NC_045512.2.2.11    100.00    100.00    100.00    0.0       0.0       0.0       13442..16237        932       932       YP_009725307.1      ORF1ab|RNA-dependent RNA polymerase
+NC_045512.2.2.12    100.00    100.00    100.00    0.0       0.0       0.0       16238..18040        601       601       YP_009725308.1      ORF1ab|helicase     
+NC_045512.2.2.13    100.00    100.00    100.00    0.0       0.0       0.0       18041..19621        527       527       YP_009725309.1      ORF1ab|3'-to-5' exonuclease
+NC_045512.2.2.14    100.00    100.00    100.00    0.0       0.0       0.0       19622..20659        346       346       YP_009725310.1      ORF1ab|endoRNAse    
+NC_045512.2.2.15    100.00    100.00    100.00    0.0       0.0       0.0       20660..21553        298       298       YP_009725311.1      ORF1ab|2'-O-ribose methyltransferase
+NC_045512.2.3       100.00    100.00    100.00    0.0       0.0       0.0       21563..25384        1273      1273      YP_009724390.1      S | surface glycoprotein
+NC_045512.2.4       100.00    100.00    100.00    0.0       0.0       0.0       25393..26220        275       275       YP_009724391.1      ORF3a | ORF3a protein
+NC_045512.2.5       100.00    100.00    100.00    0.0       0.0       0.0       26245..26472        75        75        YP_009724392.1      E | envelope protein
+NC_045512.2.6       100.00    100.00    100.00    0.0       0.0       0.0       26523..27191        222       222       YP_009724393.1      M | membrane glycoprotein
+NC_045512.2.7       100.00    100.00    100.00    0.0       0.0       0.0       27202..27387        61        61        YP_009724394.1      ORF6 | ORF6 protein 
+NC_045512.2.8       100.00    100.00    100.00    0.0       0.0       0.0       27394..27759        121       121       YP_009724395.1      ORF7a | ORF7a protein
+NC_045512.2.9       100.00    100.00    100.00    0.0       0.0       0.0       27756..27887        43        43        YP_009725296.1      ORF7b | ORF7b protein
+NC_045512.2.10      100.00    100.00    100.00    0.0       0.0       0.0       27894..28259        121       121       YP_009724396.1      ORF8 | ORF8 protein 
+NC_045512.2.11      100.00    100.00    100.00    0.0       0.0       0.0       28274..29533        419       419       YP_009724397.2      N | nucleocapsid phosphoprotein
+NC_045512.2.12      100.00    100.00    100.00    0.0       0.0       0.0       29558..29674        38        38        YP_009725255.1      ORF10 | ORF10 protein
+

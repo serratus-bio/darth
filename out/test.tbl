@@ -1,0 +1,177 @@
+>Features NC_045512.2
+266	13483	gene
+			locus_tag	vigor_ORF1a
+			gene	ORF1a
+266	13483	CDS
+			codon_start	1
+			protein_id	NC_045512.2.1
+			locus_tag	vigor_ORF1a
+			gene	ORF1a
+			product	ORF1a polyprotein
+266	21555	gene
+			locus_tag	vigor_ORF1ab
+			gene	ORF1ab
+266	13468	CDS
+13468	21555
+			codon_start	1
+			protein_id	NC_045512.2.2
+			locus_tag	vigor_ORF1ab
+			gene	ORF1ab
+			product	ORF1ab polyprotein
+			ribosomal_slippage
+21563	25384	gene
+			locus_tag	vigor_S
+			gene	S
+21563	25384	CDS
+			codon_start	1
+			protein_id	NC_045512.2.3
+			locus_tag	vigor_S
+			gene	S
+			product	surface glycoprotein
+25393	26220	gene
+			locus_tag	vigor_ORF3a
+			gene	ORF3a
+25393	26220	CDS
+			codon_start	1
+			protein_id	NC_045512.2.4
+			locus_tag	vigor_ORF3a
+			gene	ORF3a
+			product	ORF3a protein
+26245	26472	gene
+			locus_tag	vigor_E
+			gene	E
+26245	26472	CDS
+			codon_start	1
+			protein_id	NC_045512.2.5
+			locus_tag	vigor_E
+			gene	E
+			product	envelope protein
+26523	27191	gene
+			locus_tag	vigor_M
+			gene	M
+26523	27191	CDS
+			codon_start	1
+			protein_id	NC_045512.2.6
+			locus_tag	vigor_M
+			gene	M
+			product	membrane glycoprotein
+27202	27387	gene
+			locus_tag	vigor_ORF6
+			gene	ORF6
+27202	27387	CDS
+			codon_start	1
+			protein_id	NC_045512.2.7
+			locus_tag	vigor_ORF6
+			gene	ORF6
+			product	ORF6 protein
+27394	27759	gene
+			locus_tag	vigor_ORF7a
+			gene	ORF7a
+27394	27759	CDS
+			codon_start	1
+			protein_id	NC_045512.2.8
+			locus_tag	vigor_ORF7a
+			gene	ORF7a
+			product	ORF7a protein
+27756	27887	gene
+			locus_tag	vigor_ORF7b
+			gene	ORF7b
+27756	27887	CDS
+			codon_start	1
+			protein_id	NC_045512.2.9
+			locus_tag	vigor_ORF7b
+			gene	ORF7b
+			product	ORF7b protein
+27894	28259	gene
+			locus_tag	vigor_ORF8
+			gene	ORF8
+27894	28259	CDS
+			codon_start	1
+			protein_id	NC_045512.2.10
+			locus_tag	vigor_ORF8
+			gene	ORF8
+			product	ORF8 protein
+28274	29533	gene
+			locus_tag	vigor_N
+			gene	N
+28274	29533	CDS
+			codon_start	1
+			protein_id	NC_045512.2.11
+			locus_tag	vigor_N
+			gene	N
+			product	nucleocapsid phosphoprotein
+29558	29674	gene
+			locus_tag	vigor_ORF10
+			gene	ORF10
+29558	29674	CDS
+			codon_start	1
+			protein_id	NC_045512.2.12
+			locus_tag	vigor_ORF10
+			gene	ORF10
+			product	ORF10 protein
+>Features NC_045512.2.1
+4393	4405	mat_peptide
+			product	nsp11
+			locus_tag	vigor_ORF1a
+			gene	ORF1a
+>Features NC_045512.2.2
+1	180	mat_peptide
+			product	leader protein
+			locus_tag	vigor_ORF1ab
+			gene	ORF1ab
+181	818	mat_peptide
+			product	nsp2
+			locus_tag	vigor_ORF1ab
+			gene	ORF1ab
+819	2763	mat_peptide
+			product	nsp3
+			locus_tag	vigor_ORF1ab
+			gene	ORF1ab
+2764	3263	mat_peptide
+			product	nsp4
+			locus_tag	vigor_ORF1ab
+			gene	ORF1ab
+3264	3569	mat_peptide
+			product	3C-like proteinase
+			locus_tag	vigor_ORF1ab
+			gene	ORF1ab
+3570	3859	mat_peptide
+			product	nsp6
+			locus_tag	vigor_ORF1ab
+			gene	ORF1ab
+3860	3942	mat_peptide
+			product	nsp7
+			locus_tag	vigor_ORF1ab
+			gene	ORF1ab
+3943	4140	mat_peptide
+			product	nsp8
+			locus_tag	vigor_ORF1ab
+			gene	ORF1ab
+4141	4253	mat_peptide
+			product	nsp9
+			locus_tag	vigor_ORF1ab
+			gene	ORF1ab
+4254	4392	mat_peptide
+			product	nsp10
+			locus_tag	vigor_ORF1ab
+			gene	ORF1ab
+4393	5324	mat_peptide
+			product	RNA-dependent RNA polymerase
+			locus_tag	vigor_ORF1ab
+			gene	ORF1ab
+5325	5925	mat_peptide
+			product	helicase
+			locus_tag	vigor_ORF1ab
+			gene	ORF1ab
+5926	6452	mat_peptide
+			product	3'-to-5' exonuclease
+			locus_tag	vigor_ORF1ab
+			gene	ORF1ab
+6453	6798	mat_peptide
+			product	endoRNAse
+			locus_tag	vigor_ORF1ab
+			gene	ORF1ab
+6799	7096	mat_peptide
+			product	2'-O-ribose methyltransferase
+			locus_tag	vigor_ORF1ab
+			gene	ORF1ab

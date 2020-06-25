@@ -1,0 +1,84 @@
+>Features Bat
+3596	2913	gene
+			locus_tag	vigor_M
+			gene	M
+3596	2913	CDS
+			codon_start	1
+			protein_id	Bat.5
+			locus_tag	vigor_M
+			gene	M
+			product	membrane glycoprotein
+<16821	10194	gene
+			locus_tag	vigor_ORF1ab
+			gene	ORF1ab
+<10194	8785	CDS
+16818	12313
+20660	16821
+			codon_start	1
+			protein_id	Bat.4b
+			locus_tag	vigor_ORF1ab
+			gene	ORF1ab
+			product	putative ORF1ab polyprotein, C-terminal
+			ribosomal_slippage
+			note	coding region disrupted by sequencing gap
+<20660	16803	gene
+			locus_tag	vigor_ORF1a
+			gene	ORF1a
+<20660	16803	CDS
+			codon_start	1
+			protein_id	Bat.3b
+			locus_tag	vigor_ORF1a
+			gene	ORF1a
+			product	putative ORF1a polyprotein, C-terminal
+			note	coding region disrupted by sequencing gap
+22711	20688	CDS
+28629	>25201
+			codon_start	1
+			protein_id	Bat.1a
+			locus_tag	vigor_ORF1a
+			gene	ORF1a
+			product	putative ORF1a polyprotein, N-terminal
+			note	coding region disrupted by sequencing gap
+25201	10194	gene
+			locus_tag	vigor_ORF1ab
+			gene	ORF1ab
+22711	20688	CDS
+28629	>25201
+			codon_start	1
+			protein_id	Bat.2a
+			locus_tag	vigor_ORF1ab
+			gene	ORF1ab
+			product	putative ORF1ab polyprotein, N-terminal
+			ribosomal_slippage
+			note	coding region disrupted by sequencing gap
+>Features Bat.4b
+6620	6353	mat_peptide
+			product	nsp6
+			locus_tag	vigor_ORF1ab
+			gene	ORF1ab
+6352	6270	mat_peptide
+			product	nsp7
+			locus_tag	vigor_ORF1ab
+			gene	ORF1ab
+6269	6075	mat_peptide
+			product	nsp8
+			locus_tag	vigor_ORF1ab
+			gene	ORF1ab
+6074	5966	mat_peptide
+			product	nsp9
+			locus_tag	vigor_ORF1ab
+			gene	ORF1ab
+5965	5835	mat_peptide
+			product	nsp10
+			locus_tag	vigor_ORF1ab
+			gene	ORF1ab
+>Features Bat.1a
+3926	3917	mat_peptide
+			product	nsp11
+			locus_tag	vigor_ORF1a
+			gene	ORF1a
+>Features Bat.2a
+5613	5295	mat_peptide
+			product	nsp4
+			locus_tag	vigor_ORF1ab
+			gene	ORF1ab

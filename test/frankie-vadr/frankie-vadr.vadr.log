@@ -1,0 +1,28 @@
+# v-annotate.pl :: classify and annotate sequences using a CM library
+# VADR 1.1 (May 2020)
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# date:              Thu Jun 25 14:19:12 2020
+# $VADRBIOEASELDIR:  /home/taltman/repos/darth/third-party/vadr/Bio-Easel
+# $VADRBLASTDIR:     /home/taltman/repos/darth/third-party/vadr/ncbi-blast/bin
+# $VADREASELDIR:     /home/taltman/repos/darth/third-party/vadr/infernal/binaries
+# $VADRINFERNALDIR:  /home/taltman/repos/darth/third-party/vadr/infernal/binaries
+# $VADRMODELDIR:     /home/taltman/repos/darth/third-party/vadr/vadr-models
+# $VADRSCRIPTSDIR:   /home/taltman/repos/darth/third-party/vadr/vadr
+#
+# sequence file:                                                                       data/GCF_009858895.2_ASM985889v3_genomic.fna
+# output directory:                                                                    test/frankie-vadr
+# specify that alert codes in <s> cause FAILure:                                       lowscore,fsthicnf,fstlocnf [--alt_fail]
+# .cm, .minfo, blastn .fa files in $VADRMODELDIR start with key <s>, not 'vadr':       corona [--mkey]
+# model files are in directory <s>, not in $VADRMODELDIR:                              data/vadr-models-corona-1.1-1 [--mdir]
+# lowscore/LOW_SCORE bits per nucleotide threshold is <x>:                             0.75 [--lowsc]
+# lowsim{5s,5f,3s,3f}/LOW_{FEATURE}_SIMILARITY_{START,END} minimum length is <n>:      2 [--lowsimterm]
+# fstlocnf/POSSIBLE_FRAMESHIFT_LOW_CONF minimum average probability for alert is <x>:  0.0 [--fstlowthr]
+# set max allowed memory for cmalign to <n> Mb:                                        8000 [--mxsize]
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# Validating input                                                                        ... done. [    0.5 seconds]
+# Classifying sequences (1 seq)                                                           ... done. [  225.5 seconds]
+# Determining sequence coverage (NC_045512: 1 seq)                                        ... 
+ERROR in utl_RunCommand(), the following command failed:
+/home/taltman/repos/darth/third-party/vadr/infernal/binaries/cmfetch data/vadr-models-corona-1.1-1/corona.cm NC_045512 | /home/taltman/repos/darth/third-party/vadr/infernal/binaries/cmsearch  -T -10 --cpu 0 --hmmonly  --noali  --tblout test/frankie-vadr/frankie-vadr.vadr.std.cdt.s0.tblout - test/frankie-vadr/frankie-vadr.vadr.NC_045512.fa > test/frankie-vadr/frankie-vadr.vadr.std.cdt.s0.stdout
+
+[fail]

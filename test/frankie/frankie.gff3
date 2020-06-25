@@ -1,0 +1,25 @@
+##gff-version 3
+Bat	vigor	gene	2913	3596	.	-	0	ID=Bat.5;Name=M;
+Bat	vigor	mRNA	2913	3596	.	-	0	ID=Bat.5.1;Parent=Bat.5;
+Bat	vigor	exon	2913	3596	.	-	0	ID=Bat.5.1.1;Parent=Bat.5.1;
+Bat	vigor	CDS	2913	3596	.	-	0	ID=Bat.5.1.2;Parent=Bat.5;
+Bat	vigor	gene	8785	20660	.	-	0	ID=Bat.4b;Name=ORF1ab;Partial,
+Bat	vigor	mRNA	8785	20660	.	-	0	ID=Bat.4b.1;Parent=Bat.4b;Partial;
+Bat	vigor	exon	16821	20660	.	-	0	ID=Bat.4b.1.1;Parent=Bat.4b.1;Partial;
+Bat	vigor	exon	12313	16818	.	-	0	ID=Bat.4b.1.2;Parent=Bat.4b.1;
+Bat	vigor	exon	8785	10194	.	-	0	ID=Bat.4b.1.3;Parent=Bat.4b.1;
+Bat	vigor	CDS	8785	20660	.	-	0	ID=Bat.4b.1.4;Parent=Bat.4b;Partial;
+Bat	vigor	gene	16803	20660	.	-	0	ID=Bat.3b;Name=ORF1a;Partial,
+Bat	vigor	mRNA	16803	20660	.	-	0	ID=Bat.3b.1;Parent=Bat.3b;Partial;
+Bat	vigor	exon	16803	20660	.	-	0	ID=Bat.3b.1.1;Parent=Bat.3b.1;Partial;
+Bat	vigor	CDS	16803	20660	.	-	0	ID=Bat.3b.1.2;Parent=Bat.3b;Partial;
+Bat	vigor	gene	20688	28629	.	-	0	ID=Bat.1a;Name=ORF1a;Partial,
+Bat	vigor	mRNA	20688	28629	.	-	0	ID=Bat.1a.1;Parent=Bat.1a;Partial;
+Bat	vigor	exon	25201	28629	.	-	0	ID=Bat.1a.1.1;Parent=Bat.1a.1;
+Bat	vigor	exon	20688	22711	.	-	0	ID=Bat.1a.1.2;Parent=Bat.1a.1;Partial;
+Bat	vigor	CDS	20688	28629	.	-	0	ID=Bat.1a.1.3;Parent=Bat.1a;Partial;
+Bat	vigor	gene	20688	28629	.	-	0	ID=Bat.2a;Name=ORF1ab;Partial,
+Bat	vigor	mRNA	20688	28629	.	-	0	ID=Bat.2a.1;Parent=Bat.2a;Partial;
+Bat	vigor	exon	25201	28629	.	-	0	ID=Bat.2a.1.1;Parent=Bat.2a.1;
+Bat	vigor	exon	20688	22711	.	-	0	ID=Bat.2a.1.2;Parent=Bat.2a.1;Partial;
+Bat	vigor	CDS	20688	28629	.	-	0	ID=Bat.2a.1.3;Parent=Bat.2a;Partial;

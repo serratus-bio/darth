@@ -1,0 +1,88 @@
+Command line arguments: -i ../../data/Fr4NK.fa -o frankie -d sarscov2
+Current working directory: /home/taltman/repos/darth/test/frankie
+Using SARSCoV2 database version 20200430
+alignment_module                                  exonerate (defaults)
+alignment_score_factor                            1.0 (/home/taltman/repos/darth/third-party/VIGOR_DB/Reference_DBs/sarscov2_db.ini)
+circular_genome                                   false (commandline)
+exonerate_path                                    /home/taltman/.miniconda3/bin/exonerate (/home/taltman/repos/darth/third-party/VIGOR4/vigor-4.1.20200430-122814-96585d9/config/vigor.ini)
+frameshift_sensitivity                            1 (commandline)
+leakystop_notFound_score                          80.0 (defaults)
+leakystop_score_factor                            1.0 (/home/taltman/repos/darth/third-party/VIGOR_DB/Reference_DBs/sarscov2_db.ini)
+locus_tag                                         vigor_ (commandline)
+mature_pep_mincoverage                            50.0 (defaults)
+mature_pep_minidentity                            25.0 (defaults)
+mature_pep_minsimilarity                          40.0 (defaults)
+max_aa_overlap                                    10 (defaults)
+max_align_merge_aa_gap                            10 (defaults)
+max_intron_size                                   2500 (defaults)
+max_nt_overlap                                    30 (defaults)
+min_missing_AA_size                               10 (defaults)
+min_pseudogene_coverage                           80.0 (defaults)
+min_pseudogene_identity                           70.0 (defaults)
+min_pseudogene_similarity                         80.0 (defaults)
+min_seq_gap_length                                20 (defaults)
+output_directory                                  /home/taltman/repos/darth/test/frankie (commandline)
+output_formats                                    [ALN, CDS, PEP, GFF3, TBL] (defaults)
+output_prefix                                     frankie (commandline)
+reference_database_file                           /home/taltman/repos/darth/third-party/VIGOR_DB/Reference_DBs/sarscov2_db (commandline)
+reference_database_path                           /home/taltman/repos/darth/third-party/VIGOR_DB/Reference_DBs (/home/taltman/repos/darth/third-party/VIGOR4/vigor-4.1.20200430-122814-96585d9/config/vigor.ini)
+splicing_score_factor                             1.0 (/home/taltman/repos/darth/third-party/VIGOR_DB/Reference_DBs/sarscov2_db.ini)
+start_codon_search_window                         50 (defaults)
+start_codons                                      [ATG] (defaults)
+start_score_factor                                1.0 (/home/taltman/repos/darth/third-party/VIGOR_DB/Reference_DBs/sarscov2_db.ini)
+stop_codon_search_window                          50 (defaults)
+stop_score_factor                                 1.0 (/home/taltman/repos/darth/third-party/VIGOR_DB/Reference_DBs/sarscov2_db.ini)
+temporary_directory                               /dev/shm (/home/taltman/repos/darth/third-party/VIGOR4/vigor-4.1.20200430-122814-96585d9/config/vigor.ini)
+verbose                                           false (commandline)
+Getting alignments for Bat
+14 alignment(s) found for sequence Bat
+12 candidate model(s) found for sequence Bat
+5 gene model(s) found for sequence Bat
+finding alignments in /home/taltman/repos/darth/third-party/VIGOR_DB/Reference_DBs/sarscov2_orf1a_mp for seq YP_009725295.1
+Best matches:
+id                       len     sub           qry         %id      %sim     %cov     comment
+YP_009725312.1           0013    0479-0488     0003-0012   0.6000   0.6154   0.7692   product="nsp11"
+
+finding alignments in /home/taltman/repos/darth/third-party/VIGOR_DB/Reference_DBs/sarscov2_orf1ab_mp for seq YP_009724389.1
+Best matches:
+id                       len     sub           qry         %id      %sim     %cov     comment
+YP_009725300.1           0500    1483-1801     0001-0328   0.2500   0.4826   0.9535   product="nsp4"
+
+finding alignments in /home/taltman/repos/darth/third-party/VIGOR_DB/Reference_DBs/sarscov2_orf1a_mp for seq YP_009725295.1
+Best matches:
+id                       len     sub           qry         %id      %sim     %cov     comment
+
+
+finding alignments in /home/taltman/repos/darth/third-party/VIGOR_DB/Reference_DBs/sarscov2_orf1ab_mp for seq YP_009724389.1
+Best matches:
+id                       len     sub           qry         %id      %sim     %cov     comment
+YP_009725302.1           0290    0476-0743     0013-0289   0.2527   0.4897   0.9552   product="nsp6"
+YP_009725303.1           0083    0744-0826     0000-0082   0.4217   0.6627   1.0000   product="nsp7"
+YP_009725304.1           0198    0827-1017     0000-0190   0.4398   0.6818   0.9646   product="nsp8"
+YP_009725305.1           0113    1022-1130     0000-0112   0.4336   0.6372   1.0000   product="nsp9"
+YP_009725306.1           0139    1131-1261     0000-0131   0.5833   0.6691   0.9496   product="nsp10"
+
+
+Sequence                        Length    Genes     Pseudogenes    CDS_Bases      Peptide_Bases  %Ref_Identity  %Ref_Similarity  %Ref_Coverage  Ref_DB              
+Bat                             29264     5         0              25195          8398           35.49          21.89            38.66          /home/taltman/repos/darth/third-party/VIGOR_DB/Reference_DBs/sarscov2_db
+
+
+
+gene_id             %id       %sim      %cov      %t5       %gap      %t3       start..stop         pep_size  ref_size  ref_id              definition          
+Bat.5               31.08     52.86     97.80     0.0       0.0       0.0       3596..2913          227       222       YP_009724393.1      M | membrane glycoprotein
+Bat.4b              50.48     26.73     39.67     0.0       0.0       0.0       <10194..8785        
+                                                                                16818..12313        
+                                                                                20660..16821        3251      7096      YP_009724389.1      ORF1ab | ORF1ab polyprotein
+Bat.4b.1            25.27     48.97     95.52     0.0       0.0       0.0       19232..18429        268       290       YP_009725302.1      ORF1ab|nsp6         
+Bat.4b.2            42.17     66.27     100.00    0.0       0.0       0.0       18428..18180        83        83        YP_009725303.1      ORF1ab|nsp7         
+Bat.4b.3            43.98     68.18     96.46     0.0       0.0       0.0       18179..17595        195       198       YP_009725304.1      ORF1ab|nsp8         
+Bat.4b.4            43.36     63.72     100.00    0.0       0.0       0.0       17594..17268        109       113       YP_009725305.1      ORF1ab|nsp9         
+Bat.4b.5            58.33     66.91     94.96     0.0       0.0       0.0       17267..16875        131       139       YP_009725306.1      ORF1ab|nsp10        
+Bat.3b              39.22     17.23     29.60     0.0       0.0       0.0       <20660..16803       1285      4405      YP_009725295.1      ORF1a | ORF1a polyprotein
+Bat.1a              28.33     7.79      16.19     0.0       0.0       0.0       22711..20688        
+                                                                                28629..>25201       1817      4405      YP_009725295.1      ORF1a | ORF1a polyprotein
+Bat.1a.1            60.00     61.54     76.92     0.0       0.0       0.0       27192..27163        10        13        YP_009725312.1      ORF1a|nsp11         
+Bat.2a              28.33     4.83      10.05     0.0       0.0       0.0       22711..20688        
+                                                                                28629..>25201       1817      7096      YP_009724389.1      ORF1ab | ORF1ab polyprotein
+Bat.2a.1            25.00     48.26     95.35     0.0       0.0       0.0       21690..20734        319       500       YP_009725300.1      ORF1ab|nsp4         
+
