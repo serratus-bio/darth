@@ -1,0 +1,4 @@
+#seq  seq            seq                                      sub                           seq    mdl          num                        sub     score  diff/  seq   
+#idx  name           len  p/f   ant  model1     grp1          grp1          score  sc/nt    cov    cov   bias  hits  str  model2     grp2  grp2     diff     nt  alerts
+#---  -----------  -----  ----  ---  ---------  ------------  ----------  -------  -----  -----  -----  -----  ----  ---  ---------  ----  ----  -------  -----  ------
+1     NC_045512.2  29903  PASS  yes  NC_045512  Sarbecovirus  SARS-CoV-2  32033.0  1.071  1.000  1.000  829.8     1    +  NC_004718  -     -     11246.6  0.376  -     

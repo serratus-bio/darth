@@ -1,0 +1,77 @@
+>Feature Bat
+282	20480	gene
+			gene	ORF1ab
+282	12432	misc_feature
+12432	20480
+			note	similar to ORF1ab polyprotein
+282	12462	misc_feature
+			note	similar to ORF1a polyprotein
+20477	24798	gene
+			gene	S
+20477	24798	misc_feature
+			note	similar to spike protein
+24798	25457	gene
+			gene	ORF3
+24798	25457	misc_feature
+			note	similar to ORF3 protein
+25441	25662	gene
+			gene	E
+25441	25662	CDS
+			product	envelope protein
+			protein_id	Bat_1
+25669	26352	gene
+			gene	M
+25669	26352	CDS
+			product	membrane protein
+			protein_id	Bat_2
+26391	27840	gene
+			gene	N
+26391	27840	misc_feature
+			note	similar to nucleocapsid protein
+27363	28961	gene
+			gene	ORF7
+27363	28961	misc_feature
+			note	similar to hypothetical protein
+
+Additional note(s) to submitter:
+ERROR: DUPLICATE_REGIONS: (*sequence*) similarity to a model region occurs more than once [20961-20990 (len 30 >= 20) hits 1 (6267.6 bits) and 2 (1323.7 bits) (model:4966..20990,20961..28159 seq:4423..20505,20653..27686), 4966-5032 (len 67 >= 20) hits 1 (6267.6 bits) and 4 (234.6 bits) (model:4966..20990,3697..5032 seq:4423..20505,3019..4267)]
+ERROR: LOW_SIMILARITY_END: (*sequence*) significant similarity not detected at 3' end of the sequence [low similarity region of length 81 (29184..29264)]
+ERROR: LOW_FEATURE_SIMILARITY: (ORF1ab) region within annotated feature lacks significant similarity [5 nt overlap b/t low similarity region (2008..2012) and annotated feature (282..20480), strand: +]
+ERROR: LOW_FEATURE_SIMILARITY: (ORF1ab) region within annotated feature lacks significant similarity [116 nt overlap b/t low similarity region (2903..3018) and annotated feature (282..20480), strand: +]
+ERROR: LOW_FEATURE_SIMILARITY: (ORF1ab) region within annotated feature lacks significant similarity [155 nt overlap b/t low similarity region (4268..4422) and annotated feature (282..20480), strand: +]
+ERROR: CDS_HAS_STOP_CODON: (ORF1ab polyprotein) in-frame stop codon exists 5' of stop position predicted by homology to reference [revised to 282..354 (stop shifted 20126 nt)]
+ERROR: POSSIBLE_FRAMESHIFT_HIGH_CONF: (ORF1ab polyprotein) high confidence potential frameshift in CDS [nucleotide alignment of positions 282..914 (633 nt, avgpp: 0.853) on + strand are inconsistent with dominant frame (+3); inserts:777-778,914; deletes:790(2);]
+ERROR: POSSIBLE_FRAMESHIFT_HIGH_CONF: (ORF1ab polyprotein) high confidence potential frameshift in CDS [nucleotide alignment of positions 2574..2895 (322 nt, avgpp: 0.896) on + strand are inconsistent with dominant frame (+3); inserts:2591,2820,2895; deletes:2573(2),2811(1);]
+ERROR: POSSIBLE_FRAMESHIFT_HIGH_CONF: (ORF1ab polyprotein) high confidence potential frameshift in CDS [nucleotide alignment of positions 3172..3362 (191 nt, avgpp: 0.914) on + strand are inconsistent with dominant frame (+3); inserts:3019,3046,3362; deletes:2903(7),2936(1),2938(29),2956(25),2974(16),2981(14),2984(14),3004(7),3054(2),3059(1),3068(1),3119(5),3141(49),3151(14),3171(28);]
+ERROR: POSSIBLE_FRAMESHIFT_HIGH_CONF: (ORF1ab polyprotein) high confidence potential frameshift in CDS [nucleotide alignment of positions 3372..3635 (264 nt, avgpp: 0.863) on + strand are inconsistent with dominant frame (+3); inserts:none; deletes:3371(1),3635(32);]
+ERROR: POSSIBLE_FRAMESHIFT_HIGH_CONF: (ORF1ab polyprotein) high confidence potential frameshift in CDS [nucleotide alignment of positions 6100..7597 (1498 nt, avgpp: 0.895) on + strand are inconsistent with dominant frame (+3); inserts:6100-6101,6524,6532-6533,7587-7597; deletes:6500(1);]
+ERROR: POSSIBLE_FRAMESHIFT_HIGH_CONF: (ORF1ab polyprotein) high confidence potential frameshift in CDS [nucleotide alignment of positions 7662..8618 (957 nt, avgpp: 0.843) on + strand are inconsistent with dominant frame (+3); inserts:7614-7615,7662-7668,8578-8618; deletes:7632(2);]
+ERROR: INDEFINITE_ANNOTATION_START: (ORF1ab polyprotein) protein-based alignment does not extend close enough to nucleotide-based alignment 5' endpoint [8323 > 5 (strand:+ CM:282 blastx:282 + 8323)]
+ERROR: UNEXPECTED_LENGTH: (ORF1ab polyprotein) length of complete coding (CDS or mat_peptide) feature is not a multiple of 3 [20200]
+ERROR: CDS_HAS_STOP_CODON: (ORF1a polyprotein) in-frame stop codon exists 5' of stop position predicted by homology to reference [revised to 282..354 (stop shifted 12108 nt)]
+ERROR: POSSIBLE_FRAMESHIFT_HIGH_CONF: (ORF1a polyprotein) high confidence potential frameshift in CDS [nucleotide alignment of positions 6532..7615 (1084 nt, avgpp: 0.933) on + strand are inconsistent with dominant frame (+1); inserts:6532-6533,7587-7597,7614-7615; deletes:none;]
+ERROR: POSSIBLE_FRAMESHIFT_HIGH_CONF: (ORF1a polyprotein) high confidence potential frameshift in CDS [nucleotide alignment of positions 7633..8650 (1018 nt, avgpp: 0.803) on + strand are inconsistent with dominant frame (+1); inserts:7662-7668,8578-8618,8649-8650; deletes:7632(2);]
+ERROR: POSSIBLE_FRAMESHIFT_HIGH_CONF: (ORF1a polyprotein) high confidence potential frameshift in CDS [nucleotide alignment of positions 8763..10257 (1495 nt, avgpp: 0.924) on + strand are inconsistent with dominant frame (+1); inserts:10054-10055; deletes:8762(5),10043(2),10257(1);]
+ERROR: POSSIBLE_FRAMESHIFT_HIGH_CONF: (ORF1a polyprotein) high confidence potential frameshift in CDS [nucleotide alignment of positions 10270..12462 (2193 nt, avgpp: 0.896) on + strand are inconsistent with dominant frame (+1); inserts:10270,10466-10467,10515,10625-10626,11506; deletes:10454(2),10521(1),10611(2),11515(1);]
+ERROR: INDEFINITE_ANNOTATION_START: (ORF1a polyprotein) protein-based alignment does not extend close enough to nucleotide-based alignment 5' endpoint [8323 > 5 (strand:+ CM:282 blastx:8605)]
+ERROR: UNEXPECTED_LENGTH: (ORF1a polyprotein) length of complete coding (CDS or mat_peptide) feature is not a multiple of 3 [12181]
+ERROR: CDS_HAS_STOP_CODON: (spike protein) in-frame stop codon exists 5' of stop position predicted by homology to reference [revised to 20477..20520 (stop shifted 4278 nt)]
+ERROR: INDEFINITE_ANNOTATION_START: (spike protein) protein-based alignment does not extend close enough to nucleotide-based alignment 5' endpoint [305 > 5 (strand:+ CM:20477 blastx:20782)]
+ERROR: MUTATION_AT_START: (spike protein) expected start codon could not be identified [GTG starting at position 20477 on + strand is not a valid start]
+ERROR: UNEXPECTED_LENGTH: (spike protein) length of complete coding (CDS or mat_peptide) feature is not a multiple of 3 [4322]
+ERROR: INDEFINITE_ANNOTATION_START: (ORF3 protein) protein-based alignment does not extend close enough to nucleotide-based alignment 5' endpoint [9 > 5 (strand:+ CM:24798 blastx:24807)]
+ERROR: MUTATION_AT_START: (ORF3 protein) expected start codon could not be identified [AAC starting at position 24798 on + strand is not a valid start]
+ERROR: INDEFINITE_ANNOTATION_END: (N) alignment to homology model has low confidence at 3' boundary [0.05 < 0.80, RF position 28038]
+ERROR: INDEFINITE_ANNOTATION_START: (N) alignment to homology model has low confidence at 5' boundary [0.40 < 0.80, RF position 26770]
+ERROR: CDS_HAS_STOP_CODON: (nucleocapsid protein) in-frame stop codon exists 5' of stop position predicted by homology to reference [revised to 26391..26409 (stop shifted 1431 nt)]
+ERROR: DELETION_OF_NT: (nucleocapsid protein) too large of a deletion in protein-based alignment [blastx predicted delete of length 42>27 starting at reference amino acid posn 140]
+ERROR: INDEFINITE_ANNOTATION_END: (nucleocapsid protein) alignment to homology model has low confidence at 3' boundary [0.05 < 0.80, RF position 28038]
+ERROR: INDEFINITE_ANNOTATION_END: (nucleocapsid protein) protein-based alignment does not extend close enough to nucleotide-based alignment 3' endpoint [269 > 5 (strand:+ CM:27840 blastx:27571)]
+ERROR: INDEFINITE_ANNOTATION_START: (nucleocapsid protein) alignment to homology model has low confidence at 5' boundary [0.40 < 0.80, RF position 26770]
+ERROR: INDEFINITE_ANNOTATION_START: (nucleocapsid protein) protein-based alignment extends past nucleotide-based alignment at 5' end [strand:+ CM:26391 blastx:26369]
+ERROR: UNEXPECTED_LENGTH: (nucleocapsid protein) length of complete coding (CDS or mat_peptide) feature is not a multiple of 3 [1450]
+ERROR: INDEFINITE_ANNOTATION_END: (ORF7) alignment to homology model has low confidence at 3' boundary [0.60 < 0.80, RF position 28534]
+ERROR: CDS_HAS_STOP_CODON: (hypothetical protein) in-frame stop codon exists 5' of stop position predicted by homology to reference [revised to 27363..27509 (stop shifted 1452 nt)]
+ERROR: INDEFINITE_ANNOTATION_END: (hypothetical protein) alignment to homology model has low confidence at 3' boundary [0.60 < 0.80, RF position 28534]
+ERROR: INDEFINITE_ANNOTATION: (hypothetical protein) nucleotide-based search identifies CDS not identified in protein-based search
+ERROR: MUTATION_AT_START: (hypothetical protein) expected start codon could not be identified [CCG starting at position 27363 on + strand is not a valid start]

@@ -1,0 +1,121 @@
+# v-annotate.pl :: classify and annotate sequences using a CM library
+# VADR 1.1 (May 2020)
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# date:              Thu Jun 25 22:41:54 2020
+# $VADRBIOEASELDIR:  /home/ubuntu/repos/darth/third-party/vadr/Bio-Easel
+# $VADRBLASTDIR:     /home/ubuntu/repos/darth/third-party/vadr/ncbi-blast/bin
+# $VADREASELDIR:     /home/ubuntu/repos/darth/third-party/vadr/infernal/binaries
+# $VADRINFERNALDIR:  /home/ubuntu/repos/darth/third-party/vadr/infernal/binaries
+# $VADRMODELDIR:     /home/ubuntu/repos/darth/third-party/vadr/vadr-models
+# $VADRSCRIPTSDIR:   /home/ubuntu/repos/darth/third-party/vadr/vadr
+#
+# sequence file:                                                                       data/GCF_009858895.2_ASM985889v3_genomic.fna
+# output directory:                                                                    test/frankie-vadr
+# specify that alert codes in <s> cause FAILure:                                       lowscore,fsthicnf,fstlocnf [--alt_fail]
+# .cm, .minfo, blastn .fa files in $VADRMODELDIR start with key <s>, not 'vadr':       corona [--mkey]
+# model files are in directory <s>, not in $VADRMODELDIR:                              data/vadr-models-corona-1.1-1 [--mdir]
+# lowscore/LOW_SCORE bits per nucleotide threshold is <x>:                             0.75 [--lowsc]
+# lowsim{5s,5f,3s,3f}/LOW_{FEATURE}_SIMILARITY_{START,END} minimum length is <n>:      2 [--lowsimterm]
+# fstlocnf/POSSIBLE_FRAMESHIFT_LOW_CONF minimum average probability for alert is <x>:  0.0 [--fstlowthr]
+# set max allowed memory for cmalign to <n> Mb:                                        8000 [--mxsize]
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# Validating input                                                                        ... done. [    0.3 seconds]
+# Classifying sequences (1 seq)                                                           ... done. [  140.5 seconds]
+# Determining sequence coverage (NC_045512: 1 seq)                                        ... done. [   25.4 seconds]
+# Aligning sequences (NC_045512: 1 seq)                                                   ... done. [  178.1 seconds]
+# Determining annotation                                                                  ... done. [    0.3 seconds]
+# Validating proteins with blastx (NC_045512: 1 seq)                                      ... done. [    0.9 seconds]
+# Generating tabular output                                                               ... done. [    0.0 seconds]
+# Generating feature table output                                                         ... done. [    0.0 seconds]
+#
+# Summary of classified sequences:
+#
+#                                           num   num   num
+#idx  model      group         subgroup    seqs  pass  fail
+#---  ---------  ------------  ----------  ----  ----  ----
+1     NC_045512  Sarbecovirus  SARS-CoV-2     1     1     0
+#---  ---------  ------------  ----------  ----  ----  ----
+-     *all*      -             -              1     1     0
+-     *none*     -             -              0     0     0
+#---  ---------  ------------  ----------  ----  ----  ----
+#
+# Zero alerts were reported.
+#
+# Output printed to screen saved in:                                frankie-vadr.vadr.log
+# List of executed commands saved in:                               frankie-vadr.vadr.cmd
+# List and description of all output files saved in:                frankie-vadr.vadr.filelist
+# copy of input fasta file saved in:                                frankie-vadr.vadr.in.fa
+# esl-seqstat -a output for input fasta file saved in:              frankie-vadr.vadr.seqstat
+# model NC_045512 feature gene#1 predicted seqs saved in:           frankie-vadr.vadr.NC_045512.gene.1.fa
+# model NC_045512 feature CDS#1 predicted seqs saved in:            frankie-vadr.vadr.NC_045512.CDS.1.fa
+# model NC_045512 feature CDS#2 predicted seqs saved in:            frankie-vadr.vadr.NC_045512.CDS.2.fa
+# model NC_045512 feature gene#2 predicted seqs saved in:           frankie-vadr.vadr.NC_045512.gene.2.fa
+# model NC_045512 feature CDS#3 predicted seqs saved in:            frankie-vadr.vadr.NC_045512.CDS.3.fa
+# model NC_045512 feature gene#3 predicted seqs saved in:           frankie-vadr.vadr.NC_045512.gene.3.fa
+# model NC_045512 feature CDS#4 predicted seqs saved in:            frankie-vadr.vadr.NC_045512.CDS.4.fa
+# model NC_045512 feature gene#4 predicted seqs saved in:           frankie-vadr.vadr.NC_045512.gene.4.fa
+# model NC_045512 feature CDS#5 predicted seqs saved in:            frankie-vadr.vadr.NC_045512.CDS.5.fa
+# model NC_045512 feature gene#5 predicted seqs saved in:           frankie-vadr.vadr.NC_045512.gene.5.fa
+# model NC_045512 feature CDS#6 predicted seqs saved in:            frankie-vadr.vadr.NC_045512.CDS.6.fa
+# model NC_045512 feature gene#6 predicted seqs saved in:           frankie-vadr.vadr.NC_045512.gene.6.fa
+# model NC_045512 feature CDS#7 predicted seqs saved in:            frankie-vadr.vadr.NC_045512.CDS.7.fa
+# model NC_045512 feature gene#7 predicted seqs saved in:           frankie-vadr.vadr.NC_045512.gene.7.fa
+# model NC_045512 feature CDS#8 predicted seqs saved in:            frankie-vadr.vadr.NC_045512.CDS.8.fa
+# model NC_045512 feature gene#8 predicted seqs saved in:           frankie-vadr.vadr.NC_045512.gene.8.fa
+# model NC_045512 feature CDS#9 predicted seqs saved in:            frankie-vadr.vadr.NC_045512.CDS.9.fa
+# model NC_045512 feature gene#9 predicted seqs saved in:           frankie-vadr.vadr.NC_045512.gene.9.fa
+# model NC_045512 feature CDS#10 predicted seqs saved in:           frankie-vadr.vadr.NC_045512.CDS.10.fa
+# model NC_045512 feature gene#10 predicted seqs saved in:          frankie-vadr.vadr.NC_045512.gene.10.fa
+# model NC_045512 feature CDS#11 predicted seqs saved in:           frankie-vadr.vadr.NC_045512.CDS.11.fa
+# model NC_045512 feature gene#11 predicted seqs saved in:          frankie-vadr.vadr.NC_045512.gene.11.fa
+# model NC_045512 feature CDS#12 predicted seqs saved in:           frankie-vadr.vadr.NC_045512.CDS.12.fa
+# model NC_045512 feature mat_peptide#1 predicted seqs saved in:    frankie-vadr.vadr.NC_045512.mat_peptide.1.fa
+# model NC_045512 feature mat_peptide#2 predicted seqs saved in:    frankie-vadr.vadr.NC_045512.mat_peptide.2.fa
+# model NC_045512 feature mat_peptide#3 predicted seqs saved in:    frankie-vadr.vadr.NC_045512.mat_peptide.3.fa
+# model NC_045512 feature mat_peptide#4 predicted seqs saved in:    frankie-vadr.vadr.NC_045512.mat_peptide.4.fa
+# model NC_045512 feature mat_peptide#5 predicted seqs saved in:    frankie-vadr.vadr.NC_045512.mat_peptide.5.fa
+# model NC_045512 feature mat_peptide#6 predicted seqs saved in:    frankie-vadr.vadr.NC_045512.mat_peptide.6.fa
+# model NC_045512 feature mat_peptide#7 predicted seqs saved in:    frankie-vadr.vadr.NC_045512.mat_peptide.7.fa
+# model NC_045512 feature mat_peptide#8 predicted seqs saved in:    frankie-vadr.vadr.NC_045512.mat_peptide.8.fa
+# model NC_045512 feature mat_peptide#9 predicted seqs saved in:    frankie-vadr.vadr.NC_045512.mat_peptide.9.fa
+# model NC_045512 feature mat_peptide#10 predicted seqs saved in:   frankie-vadr.vadr.NC_045512.mat_peptide.10.fa
+# model NC_045512 feature mat_peptide#11 predicted seqs saved in:   frankie-vadr.vadr.NC_045512.mat_peptide.11.fa
+# model NC_045512 feature mat_peptide#12 predicted seqs saved in:   frankie-vadr.vadr.NC_045512.mat_peptide.12.fa
+# model NC_045512 feature mat_peptide#13 predicted seqs saved in:   frankie-vadr.vadr.NC_045512.mat_peptide.13.fa
+# model NC_045512 feature mat_peptide#14 predicted seqs saved in:   frankie-vadr.vadr.NC_045512.mat_peptide.14.fa
+# model NC_045512 feature mat_peptide#15 predicted seqs saved in:   frankie-vadr.vadr.NC_045512.mat_peptide.15.fa
+# model NC_045512 feature mat_peptide#16 predicted seqs saved in:   frankie-vadr.vadr.NC_045512.mat_peptide.16.fa
+# model NC_045512 feature mat_peptide#17 predicted seqs saved in:   frankie-vadr.vadr.NC_045512.mat_peptide.17.fa
+# model NC_045512 feature mat_peptide#18 predicted seqs saved in:   frankie-vadr.vadr.NC_045512.mat_peptide.18.fa
+# model NC_045512 feature mat_peptide#19 predicted seqs saved in:   frankie-vadr.vadr.NC_045512.mat_peptide.19.fa
+# model NC_045512 feature mat_peptide#20 predicted seqs saved in:   frankie-vadr.vadr.NC_045512.mat_peptide.20.fa
+# model NC_045512 feature mat_peptide#21 predicted seqs saved in:   frankie-vadr.vadr.NC_045512.mat_peptide.21.fa
+# model NC_045512 feature mat_peptide#22 predicted seqs saved in:   frankie-vadr.vadr.NC_045512.mat_peptide.22.fa
+# model NC_045512 feature mat_peptide#23 predicted seqs saved in:   frankie-vadr.vadr.NC_045512.mat_peptide.23.fa
+# model NC_045512 feature mat_peptide#24 predicted seqs saved in:   frankie-vadr.vadr.NC_045512.mat_peptide.24.fa
+# model NC_045512 feature mat_peptide#25 predicted seqs saved in:   frankie-vadr.vadr.NC_045512.mat_peptide.25.fa
+# model NC_045512 feature mat_peptide#26 predicted seqs saved in:   frankie-vadr.vadr.NC_045512.mat_peptide.26.fa
+# model NC_045512 feature stem_loop#1 predicted seqs saved in:      frankie-vadr.vadr.NC_045512.stem_loop.1.fa
+# model NC_045512 feature stem_loop#2 predicted seqs saved in:      frankie-vadr.vadr.NC_045512.stem_loop.2.fa
+# model NC_045512 feature stem_loop#3 predicted seqs saved in:      frankie-vadr.vadr.NC_045512.stem_loop.3.fa
+# model NC_045512 feature stem_loop#4 predicted seqs saved in:      frankie-vadr.vadr.NC_045512.stem_loop.4.fa
+# model NC_045512 feature stem_loop#5 predicted seqs saved in:      frankie-vadr.vadr.NC_045512.stem_loop.5.fa
+# per-sequence tabular annotation summary file saved in:            frankie-vadr.vadr.sqa
+# per-sequence tabular classification summary file saved in:        frankie-vadr.vadr.sqc
+# per-feature tabular summary file saved in:                        frankie-vadr.vadr.ftr
+# per-model-segment tabular summary file saved in:                  frankie-vadr.vadr.sgm
+# per-model tabular summary file saved in:                          frankie-vadr.vadr.mdl
+# per-alert tabular summary file saved in:                          frankie-vadr.vadr.alt
+# alert count tabular summary file saved in:                        frankie-vadr.vadr.alc
+# 5 column feature table output for passing sequences saved in:     frankie-vadr.vadr.pass.tbl
+# 5 column feature table output for failing sequences saved in:     frankie-vadr.vadr.fail.tbl
+# list of passing sequences saved in:                               frankie-vadr.vadr.pass.list
+# list of failing sequences saved in:                               frankie-vadr.vadr.fail.list
+# list of alerts in the feature tables saved in:                    frankie-vadr.vadr.alt.list
+#
+# All output files created in directory ./test/frankie-vadr/
+#
+# Elapsed time:  00:05:45.57
+#                hh:mm:ss
+# 
+[ok]

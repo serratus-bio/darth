@@ -1,0 +1,4 @@
+#seq  seq            seq             best                     sub                                    seq   
+#idx  name           len  p/f   ant  model      grp           grp         nfa  nfn  nf5  nf3  nfalt  alerts
+#---  -----------  -----  ----  ---  ---------  ------------  ----------  ---  ---  ---  ---  -----  ------
+1     NC_045512.2  29903  PASS  yes  NC_045512  Sarbecovirus  SARS-CoV-2   54    0    0    0      0  -     

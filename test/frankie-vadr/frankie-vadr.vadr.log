@@ -1,28 +1,110 @@
 # v-annotate.pl :: classify and annotate sequences using a CM library
 # VADR 1.1 (May 2020)
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-# date:              Thu Jun 25 14:19:12 2020
-# $VADRBIOEASELDIR:  /home/taltman/repos/darth/third-party/vadr/Bio-Easel
-# $VADRBLASTDIR:     /home/taltman/repos/darth/third-party/vadr/ncbi-blast/bin
-# $VADREASELDIR:     /home/taltman/repos/darth/third-party/vadr/infernal/binaries
-# $VADRINFERNALDIR:  /home/taltman/repos/darth/third-party/vadr/infernal/binaries
-# $VADRMODELDIR:     /home/taltman/repos/darth/third-party/vadr/vadr-models
-# $VADRSCRIPTSDIR:   /home/taltman/repos/darth/third-party/vadr/vadr
+# date:              Fri Jun 26 00:01:29 2020
+# $VADRBIOEASELDIR:  /home/ubuntu/repos/darth/third-party/vadr/Bio-Easel
+# $VADRBLASTDIR:     /home/ubuntu/repos/darth/third-party/vadr/ncbi-blast/bin
+# $VADREASELDIR:     /home/ubuntu/repos/darth/third-party/vadr/infernal/binaries
+# $VADRINFERNALDIR:  /home/ubuntu/repos/darth/third-party/vadr/infernal/binaries
+# $VADRMODELDIR:     /home/ubuntu/repos/darth/third-party/vadr/vadr-models
+# $VADRSCRIPTSDIR:   /home/ubuntu/repos/darth/third-party/vadr/vadr
 #
-# sequence file:                                                                       data/GCF_009858895.2_ASM985889v3_genomic.fna
-# output directory:                                                                    test/frankie-vadr
-# specify that alert codes in <s> cause FAILure:                                       lowscore,fsthicnf,fstlocnf [--alt_fail]
-# .cm, .minfo, blastn .fa files in $VADRMODELDIR start with key <s>, not 'vadr':       corona [--mkey]
-# model files are in directory <s>, not in $VADRMODELDIR:                              data/vadr-models-corona-1.1-1 [--mdir]
-# lowscore/LOW_SCORE bits per nucleotide threshold is <x>:                             0.75 [--lowsc]
-# lowsim{5s,5f,3s,3f}/LOW_{FEATURE}_SIMILARITY_{START,END} minimum length is <n>:      2 [--lowsimterm]
-# fstlocnf/POSSIBLE_FRAMESHIFT_LOW_CONF minimum average probability for alert is <x>:  0.0 [--fstlowthr]
-# set max allowed memory for cmalign to <n> Mb:                                        8000 [--mxsize]
+# sequence file:                                                                  data/Fr4NK_revcomp.fa
+# output directory:                                                               test/frankie-vadr
+# .cm, .minfo, blastn .fa files in $VADRMODELDIR start with key <s>, not 'vadr':  corona [--mkey]
+# model files are in directory <s>, not in $VADRMODELDIR:                         data/vadr-models-corona-1.1-1 [--mdir]
+# set max allowed memory for cmalign to <n> Mb:                                   64000 [--mxsize]
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-# Validating input                                                                        ... done. [    0.5 seconds]
-# Classifying sequences (1 seq)                                                           ... done. [  225.5 seconds]
-# Determining sequence coverage (NC_045512: 1 seq)                                        ... 
-ERROR in utl_RunCommand(), the following command failed:
-/home/taltman/repos/darth/third-party/vadr/infernal/binaries/cmfetch data/vadr-models-corona-1.1-1/corona.cm NC_045512 | /home/taltman/repos/darth/third-party/vadr/infernal/binaries/cmsearch  -T -10 --cpu 0 --hmmonly  --noali  --tblout test/frankie-vadr/frankie-vadr.vadr.std.cdt.s0.tblout - test/frankie-vadr/frankie-vadr.vadr.NC_045512.fa > test/frankie-vadr/frankie-vadr.vadr.std.cdt.s0.stdout
-
-[fail]
+# Validating input                                                                        ... done. [    0.3 seconds]
+# Classifying sequences (1 seq)                                                           ... done. [  136.2 seconds]
+# Determining sequence coverage (NC_010438: 1 seq)                                        ... done. [   28.5 seconds]
+# Aligning sequences (NC_010438: 1 seq)                                                   ... done. [  169.2 seconds]
+# Determining annotation                                                                  ... done. [    0.3 seconds]
+# Validating proteins with blastx (NC_010438: 1 seq)                                      ... done. [    0.7 seconds]
+# Generating tabular output                                                               ... done. [    0.0 seconds]
+# Generating feature table output                                                         ... done. [    0.0 seconds]
+#
+# Summary of classified sequences:
+#
+#                                  num   num   num
+#idx  model      group  subgroup  seqs  pass  fail
+#---  ---------  -----  --------  ----  ----  ----
+1     NC_010438  -      -            1     0     1
+#---  ---------  -----  --------  ----  ----  ----
+-     *all*      -      -            1     0     1
+-     *none*     -      -            0     0     0
+#---  ---------  -----  --------  ----  ----  ----
+#
+# Summary of reported alerts:
+#
+#     alert     causes   short                               per    num   num  long
+#idx  code      failure  description                        type  cases  seqs  description
+#---  --------  -------  -----------------------------  --------  -----  ----  -----------
+1     indfclas  no       INDEFINITE_CLASSIFICATION      sequence      1     1  low score difference between best overall model and second best model (not in best model's subgroup)
+2     fstlocnf  no       POSSIBLE_FRAMESHIFT_LOW_CONF    feature     63     1  low confidence potential frameshift in CDS
+3     insertnn  no       INSERTION_OF_NT                 feature     11     1  too large of an insertion in nucleotide-based alignment of CDS feature
+4     deletinn  no       DELETION_OF_NT                  feature     14     1  too large of a deletion in nucleotide-based alignment of CDS feature
+#---  --------  -------  -----------------------------  --------  -----  ----  -----------
+5     dupregin  yes      DUPLICATE_REGIONS              sequence      1     1  similarity to a model region occurs more than once
+6     lowsim3s  yes      LOW_SIMILARITY_END             sequence      1     1  significant similarity not detected at 3' end of the sequence
+7     mutstart  yes      MUTATION_AT_START               feature      3     1  expected start codon could not be identified
+8     mutendcd  yes      MUTATION_AT_END                 feature      1     1  expected stop codon could not be identified, predicted CDS stop by homology is invalid
+9     unexleng  yes      UNEXPECTED_LENGTH               feature      4     1  length of complete coding (CDS or mat_peptide) feature is not a multiple of 3
+10    cdsstopn  yes      CDS_HAS_STOP_CODON              feature      5     1  in-frame stop codon exists 5' of stop position predicted by homology to reference
+11    fsthicnf  yes      POSSIBLE_FRAMESHIFT_HIGH_CONF   feature     10     1  high confidence potential frameshift in CDS
+12    indfantn  yes      INDEFINITE_ANNOTATION           feature      1     1  nucleotide-based search identifies CDS not identified in protein-based search
+13    indf5loc  yes      INDEFINITE_ANNOTATION_START     feature      2     1  alignment to homology model has low confidence at 5' boundary
+14    indf5plg  yes      INDEFINITE_ANNOTATION_START     feature      1     1  protein-based alignment extends past nucleotide-based alignment at 5' end
+15    indf5pst  yes      INDEFINITE_ANNOTATION_START     feature      4     1  protein-based alignment does not extend close enough to nucleotide-based alignment 5' endpoint
+16    indf3loc  yes      INDEFINITE_ANNOTATION_END       feature      4     1  alignment to homology model has low confidence at 3' boundary
+17    indf3pst  yes      INDEFINITE_ANNOTATION_END       feature      1     1  protein-based alignment does not extend close enough to nucleotide-based alignment 3' endpoint
+18    deletinp  yes      DELETION_OF_NT                  feature      1     1  too large of a deletion in protein-based alignment
+19    lowsimif  yes      LOW_FEATURE_SIMILARITY          feature      3     1  region within annotated feature lacks significant similarity
+#---  --------  -------  -----------------------------  --------  -----  ----  -----------
+#
+# Output printed to screen saved in:                                                       frankie-vadr.vadr.log
+# List of executed commands saved in:                                                      frankie-vadr.vadr.cmd
+# List and description of all output files saved in:                                       frankie-vadr.vadr.filelist
+# copy of input fasta file saved in:                                                       frankie-vadr.vadr.in.fa
+# esl-seqstat -a output for input fasta file saved in:                                     frankie-vadr.vadr.seqstat
+# Stockholm file for >= 1 possible frameshifts for CDS.1.1 for model NC_010438 saved in:   frankie-vadr.vadr.NC_010438.CDS.1.1.frameshift.stk
+# Stockholm file for >= 1 possible frameshifts for CDS.1.2 for model NC_010438 saved in:   frankie-vadr.vadr.NC_010438.CDS.1.2.frameshift.stk
+# Stockholm file for >= 1 possible frameshifts for CDS.2.1 for model NC_010438 saved in:   frankie-vadr.vadr.NC_010438.CDS.2.1.frameshift.stk
+# Stockholm file for >= 1 possible frameshifts for CDS.3.1 for model NC_010438 saved in:   frankie-vadr.vadr.NC_010438.CDS.3.1.frameshift.stk
+# Stockholm file for >= 1 possible frameshifts for CDS.4.1 for model NC_010438 saved in:   frankie-vadr.vadr.NC_010438.CDS.4.1.frameshift.stk
+# Stockholm file for >= 1 possible frameshifts for CDS.5.1 for model NC_010438 saved in:   frankie-vadr.vadr.NC_010438.CDS.5.1.frameshift.stk
+# Stockholm file for >= 1 possible frameshifts for CDS.7.1 for model NC_010438 saved in:   frankie-vadr.vadr.NC_010438.CDS.7.1.frameshift.stk
+# model NC_010438 feature gene#1 predicted seqs saved in:                                  frankie-vadr.vadr.NC_010438.gene.1.fa
+# model NC_010438 feature CDS#1 predicted seqs saved in:                                   frankie-vadr.vadr.NC_010438.CDS.1.fa
+# model NC_010438 feature CDS#2 predicted seqs saved in:                                   frankie-vadr.vadr.NC_010438.CDS.2.fa
+# model NC_010438 feature gene#2 predicted seqs saved in:                                  frankie-vadr.vadr.NC_010438.gene.2.fa
+# model NC_010438 feature CDS#3 predicted seqs saved in:                                   frankie-vadr.vadr.NC_010438.CDS.3.fa
+# model NC_010438 feature gene#3 predicted seqs saved in:                                  frankie-vadr.vadr.NC_010438.gene.3.fa
+# model NC_010438 feature CDS#4 predicted seqs saved in:                                   frankie-vadr.vadr.NC_010438.CDS.4.fa
+# model NC_010438 feature gene#4 predicted seqs saved in:                                  frankie-vadr.vadr.NC_010438.gene.4.fa
+# model NC_010438 feature CDS#5 predicted seqs saved in:                                   frankie-vadr.vadr.NC_010438.CDS.5.fa
+# model NC_010438 feature gene#5 predicted seqs saved in:                                  frankie-vadr.vadr.NC_010438.gene.5.fa
+# model NC_010438 feature CDS#6 predicted seqs saved in:                                   frankie-vadr.vadr.NC_010438.CDS.6.fa
+# model NC_010438 feature gene#6 predicted seqs saved in:                                  frankie-vadr.vadr.NC_010438.gene.6.fa
+# model NC_010438 feature CDS#7 predicted seqs saved in:                                   frankie-vadr.vadr.NC_010438.CDS.7.fa
+# model NC_010438 feature gene#7 predicted seqs saved in:                                  frankie-vadr.vadr.NC_010438.gene.7.fa
+# model NC_010438 feature CDS#8 predicted seqs saved in:                                   frankie-vadr.vadr.NC_010438.CDS.8.fa
+# per-sequence tabular annotation summary file saved in:                                   frankie-vadr.vadr.sqa
+# per-sequence tabular classification summary file saved in:                               frankie-vadr.vadr.sqc
+# per-feature tabular summary file saved in:                                               frankie-vadr.vadr.ftr
+# per-model-segment tabular summary file saved in:                                         frankie-vadr.vadr.sgm
+# per-model tabular summary file saved in:                                                 frankie-vadr.vadr.mdl
+# per-alert tabular summary file saved in:                                                 frankie-vadr.vadr.alt
+# alert count tabular summary file saved in:                                               frankie-vadr.vadr.alc
+# 5 column feature table output for passing sequences saved in:                            frankie-vadr.vadr.pass.tbl
+# 5 column feature table output for failing sequences saved in:                            frankie-vadr.vadr.fail.tbl
+# list of passing sequences saved in:                                                      frankie-vadr.vadr.pass.list
+# list of failing sequences saved in:                                                      frankie-vadr.vadr.fail.list
+# list of alerts in the feature tables saved in:                                           frankie-vadr.vadr.alt.list
+#
+# All output files created in directory ./test/frankie-vadr/
+#
+# Elapsed time:  00:05:35.30
+#                hh:mm:ss
+# 
+[ok]
