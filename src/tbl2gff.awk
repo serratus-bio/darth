@@ -13,11 +13,16 @@ BEGIN {
 
 $1 && $2 && "ID" in annot {
 
-    attributes = ""
+    attributes = "ID=" annot["ID"]";"
     ## Concatenate the annots:
-    for (field in annot) {
-	attributes = attributes field "=" annot[field] ";"
-    }
+    if ( "Name" in annot)
+	attributes = attributes "Name="   annot["Name"]  ";"
+    if ( ftr_key == "CDS" && parent_id )
+	attributes = attributes "Parent=" parent_id      ";"
+    if ( "Alias" in annot)
+	attributes = attributes "Alias="  annot["Alias"] ";"
+    if ( "Note" in annot)
+	attributes = attributes "Note="   annot["Note"]  ";"
     
     ## Print the GFF3 line:
     print seqid,
@@ -33,6 +38,9 @@ $1 && $2 && "ID" in annot {
     ## Clear the array:
     delete annot
     split("",annot,"")
+
+    ## Set up parent info:
+    
 }
 
 $1 && $2 {
@@ -55,6 +63,8 @@ $1 && $2 {
     qual_value = $5
 
     annot["ID"] = "feature" ftr_id
+    if(ftr_key == "gene")
+	parent_id = "feature" ftr_id
     
     if (qual_key == "gene")
 	annot["Name"] = qual_value
@@ -77,7 +87,7 @@ END {
     ## Print the GFF3 line:
     print seqid,
 	prog,
-	(ftr_key!="")?ftr_key:"biological_feature",
+	(ftr_key!="")?ftr_key:"region",
 	start,
 	end,
 	".",

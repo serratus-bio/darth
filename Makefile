@@ -35,6 +35,8 @@ export PATH := $(PATH):$(CURDIR)/third-party/sratoolkit.2.10.5-ubuntu64/bin:$(CU
 
 pre-installs:
 	mkdir -p third-party
+	sudo apt-get install emboss
+
 
 # install-fraggenescan: pre-installs
 # 	cd third-party
@@ -94,7 +96,7 @@ vadr-clean:
 
 ## Miniconda comes with SQLite3
 install-vadr-deps:
-	sudo yum install -y autoconf.noarch
+	#sudo yum install -y autoconf.noarch
 	sudo cpanm Inline
 	sudo cpanm install Inline::C
 	sudo cpanm install LWP::Simple
@@ -144,11 +146,11 @@ get-wuhan-sars-cov-2-genome: pre-data-setup
 	wget https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/009/858/895/GCF_009858895.2_ASM985889v3/GCF_009858895.2_ASM985889v3_translated_cds.faa.gz
 	gunzip *.gz
 
-get-frankie:
+get-frankie: pre-data-setup
 	cd data
 	wget https://github.com/ababaian/serratus/wiki/assets/Fr4NK.fa
 
-get-vadr-cov2-model:
+get-vadr-cov2-model: pre-data-setup
 	cd data
 	wget https://ftp.ncbi.nlm.nih.gov/pub/nawrocki/vadr-models/coronaviridae/CURRENT/vadr-models-corona-1.1-1.tar.gz
 	tar xzf vadr-models-corona-1.1-1.tar.gz
@@ -165,17 +167,26 @@ annot-vigor4-frankie:
 	cd test/frankie
 	vigor4 -i ../../data/Fr4NK.fa -o frankie -d sarscov2
 
-annot-vadr-wuhan-sarscov2:
+annot-vadr-sars-cov-2:
 	mkdir -p test
 	v-annotate.pl \
 		--mdir data/vadr-models-corona-1.1-1 \
 		--mkey corona \
-		--mxsize 8000 \
+		--mxsize 64000 \
 		--lowsimterm 2 \
 		--lowsc 0.75 \
 		--fstlowthr 0.0 \
 		--alt_fail lowscore,fsthicnf,fstlocnf \
 		data/GCF_009858895.2_ASM985889v3_genomic.fna \
+		test/sars-cov-2-vadr
+
+annot-vadr-frankie:
+	mkdir -p test
+	v-annotate.pl \
+		--mdir data/vadr-models-corona-1.1-1 \
+		--mkey corona \
+		--mxsize 64000 \
+		data/Fr4NK_revcomp.fa \
 		test/frankie-vadr
 
 
