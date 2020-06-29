@@ -132,6 +132,24 @@ install-jbrowse: pre-installs
 	unzip JBrowse-1.16.9-desktop-linux-x64.zip
 
 
+## Install Docker:
+install-docker-prereqs:
+	sudo apt-get update
+	sudo apt-get -y install \
+		apt-transport-https \
+		ca-certificates \
+		curl \
+		gnupg-agent \
+		software-properties-common
+	sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+
+install-docker-repo-engine:
+	sudo add-apt-repository \
+		"deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+		$$(lsb_release -cs) \
+		stable"
+	sudo apt-get update
+	sudo apt-get install -y docker-ce docker-ce-cli containerd.io
 
 ### Data staging:
 
@@ -167,6 +185,7 @@ annot-vigor4-frankie:
 	cd test/frankie
 	vigor4 -i ../../data/Fr4NK.fa -o frankie -d sarscov2
 
+## Took about ~5 minutes
 annot-vadr-sars-cov-2:
 	mkdir -p test
 	v-annotate.pl \
@@ -180,6 +199,7 @@ annot-vadr-sars-cov-2:
 		data/GCF_009858895.2_ASM985889v3_genomic.fna \
 		test/sars-cov-2-vadr
 
+## Took about ~5 minutes
 annot-vadr-frankie:
 	mkdir -p test
 	v-annotate.pl \
@@ -189,11 +209,31 @@ annot-vadr-frankie:
 		data/Fr4NK_revcomp.fa \
 		test/frankie-vadr
 
+## Took about 11 mintues
+## (so, no parallelization by 
+annot-vadr-frankie-sars-cov-2:
+	mkdir -p test
+	cat data/Fr4NK_revcomp.fa data/GCF_009858895.2_ASM985889v3_genomic.fna > /tmp/test.fa
+	v-annotate.pl \
+		--mdir data/vadr-models-corona-1.1-1 \
+		--mkey corona \
+		--mxsize 64000 \
+		/tmp/test.fa \
+		test/frankie-sars-cov-2-vadr
 
-
-
-
-
+annotate-assemblies:
+	cat data/catA-v2.txt \
+        | time parallel \
+		--jobs 1 \
+		-N 1 \
+		--timeout 900 \
+		--joblog annot-jobs.txt \
+		--retries 3 \
+		--progress \
+		--eta \
+		--tag \
+		--tmpdir /run/user/1000 \
+		src/palpatine.sh
 
 
 

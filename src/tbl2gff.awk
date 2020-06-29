@@ -2,6 +2,32 @@
 
 ## Call with -v seqid="seq_id" -v prog="vadr"
 
+function print_attributes(ftr_key, parent_id, start, end, strand, annot) {
+
+    attributes = "ID=" annot["ID"]";"
+    ## Concatenate the annots:
+    if ( "Name" in annot)
+	attributes = attributes "Name="   annot["Name"]  ";"
+    if ( (ftr_key == "CDS" || ftr_key == "misc_feature" || ftr_key == "") && parent_id )
+	attributes = attributes "Parent=" parent_id      ";"
+    if ( "Alias" in annot)
+	attributes = attributes "Alias="  annot["Alias"] ";"
+    if ( "Note" in annot)
+	attributes = attributes "Note="   annot["Note"]  ";"
+    
+    ## Print the GFF3 line:
+    print seqid,
+	prog,
+	(ftr_key!="")?ftr_key:"region",
+	start,
+	end,
+	".",
+	strand,
+	".",
+	attributes
+
+}
+
 BEGIN {
     FS = OFS = "\t"
     print "##gff-version 3"
@@ -13,27 +39,7 @@ BEGIN {
 
 $1 && $2 && "ID" in annot {
 
-    attributes = "ID=" annot["ID"]";"
-    ## Concatenate the annots:
-    if ( "Name" in annot)
-	attributes = attributes "Name="   annot["Name"]  ";"
-    if ( ftr_key == "CDS" && parent_id )
-	attributes = attributes "Parent=" parent_id      ";"
-    if ( "Alias" in annot)
-	attributes = attributes "Alias="  annot["Alias"] ";"
-    if ( "Note" in annot)
-	attributes = attributes "Note="   annot["Note"]  ";"
-    
-    ## Print the GFF3 line:
-    print seqid,
-	prog,
-	(ftr_key!="")?ftr_key:"biological_feature",
-	start,
-	end,
-	".",
-	strand,
-	".",
-	attributes
+    print_attributes(ftr_key, parent_id, start, end, strand, annot)
 
     ## Clear the array:
     delete annot
@@ -62,9 +68,9 @@ $1 && $2 {
     qual_key   = $4
     qual_value = $5
 
-    annot["ID"] = "feature" ftr_id
+    annot["ID"] = "ftr-" ftr_id
     if(ftr_key == "gene")
-	parent_id = "feature" ftr_id
+	parent_id = "ftr-" ftr_id
     
     if (qual_key == "gene")
 	annot["Name"] = qual_value
@@ -73,26 +79,11 @@ $1 && $2 {
     if (qual_key == "protein_id")
 	annot["Alias"] = qual_value
     if (qual_key == "product")
-	annot["Note"] = qual_value
+	annot["Name"] = qual_value
 }
 
 END {
 
-    attributes = ""
-    ## Concatenate the annots:
-    for (field in annot) {
-	attributes = attributes field "=" annot[field] ";"
-    }
-    
-    ## Print the GFF3 line:
-    print seqid,
-	prog,
-	(ftr_key!="")?ftr_key:"region",
-	start,
-	end,
-	".",
-	strand,
-	".",
-	attributes
+    print_attributes(ftr_key, parent_id, start, end, strand, annot)
 
 }
