@@ -1,0 +1,4 @@
+#seq  seq     seq             best            sub                             seq   
+#idx  name    len  p/f   ant  model      grp  grp  nfa  nfn  nf5  nf3  nfalt  alerts
+#---  ----  -----  ----  ---  ---------  ---  ---  ---  ---  ---  ---  -----  ------
+1     Bat   29264  FAIL  yes  NC_010438  -    -     15    0    0    0     43  INDEFINITE_CLASSIFICATION(indfclas),DUPLICATE_REGIONS(dupregin),LOW_SIMILARITY_END(lowsim3s)

@@ -1,0 +1,16 @@
+##gff-version 3
+Bat	vadr	gene	282	20480	.	+	.	ID=ftr-1;Name=ORF1ab;
+Bat	vadr	region	12432	20480	.	+	.	ID=ftr-3;Parent=ftr-1;Note=similar to ORF1ab polyprotein;
+Bat	vadr	misc_feature	282	12462	.	+	.	ID=ftr-4;Parent=ftr-1;Note=similar to ORF1a polyprotein;
+Bat	vadr	gene	20477	24798	.	+	.	ID=ftr-5;Name=S;
+Bat	vadr	misc_feature	20477	24798	.	+	.	ID=ftr-6;Parent=ftr-5;Note=similar to spike protein;
+Bat	vadr	gene	24798	25457	.	+	.	ID=ftr-7;Name=ORF3;
+Bat	vadr	misc_feature	24798	25457	.	+	.	ID=ftr-8;Parent=ftr-7;Note=similar to ORF3 protein;
+Bat	vadr	gene	25441	25662	.	+	.	ID=ftr-9;Name=E;
+Bat	vadr	CDS	25441	25662	.	+	.	ID=ftr-10;Name=envelope protein;Parent=ftr-9;Alias=Bat_1;
+Bat	vadr	gene	25669	26352	.	+	.	ID=ftr-11;Name=M;
+Bat	vadr	CDS	25669	26352	.	+	.	ID=ftr-12;Name=membrane protein;Parent=ftr-11;Alias=Bat_2;
+Bat	vadr	gene	26391	27840	.	+	.	ID=ftr-13;Name=N;
+Bat	vadr	misc_feature	26391	27840	.	+	.	ID=ftr-14;Parent=ftr-13;Note=similar to nucleocapsid protein;
+Bat	vadr	gene	27363	28961	.	+	.	ID=ftr-15;Name=ORF7;
+Bat	vadr	misc_feature	27363	28961	.	+	.	ID=ftr-16;Parent=ftr-15;Note=similar to hypothetical protein;

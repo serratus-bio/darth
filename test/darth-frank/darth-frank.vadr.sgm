@@ -1,0 +1,19 @@
+#       seq     seq                   ftr   ftr                   ftr  num  sgm    seq    seq    mdl    mdl    sgm               5'     3'  5'   3' 
+#idx    name    len  p/f   model      type  name                  idx  sgm  idx   from     to   from     to    len  str  trc     pp     pp  gap  gap
+#-----  ----  -----  ----  ---------  ----  --------------------  ---  ---  ---  -----  -----  -----  -----  -----  ---  ---  -----  -----  ---  ---
+1.1.1   Bat   29264  FAIL  NC_010438  gene  ORF1ab                  1    1    1    282  20480    270  20959  20199    +  no     0.9  0.975  no   no 
+1.2.1   Bat   29264  FAIL  NC_010438  CDS   ORF1ab_polyprotein      2    2    1    282  12432    270  12935  12151    +  no     0.9  0.975  no   no 
+1.2.2   Bat   29264  FAIL  NC_010438  CDS   ORF1ab_polyprotein      2    2    2  12432  20480  12935  20959   8049    +  no   0.975  0.975  no   no 
+1.3.1   Bat   29264  FAIL  NC_010438  CDS   ORF1a_polyprotein       3    1    1    282  12462    270  12965  12181    +  no     0.9  0.975  no   no 
+1.4.1   Bat   29264  FAIL  NC_010438  gene  S                       4    1    1  20477  24798  20956  25083   4322    +  no   0.975    0.8  no   no 
+1.5.1   Bat   29264  FAIL  NC_010438  CDS   spike_protein           5    1    1  20477  24798  20956  25083   4322    +  no   0.975    0.8  no   no 
+1.6.1   Bat   29264  FAIL  NC_010438  gene  ORF3                    6    1    1  24798  25457  25083  25751    660    +  no     0.8  0.975  no   no 
+1.7.1   Bat   29264  FAIL  NC_010438  CDS   ORF3_protein            7    1    1  24798  25457  25083  25751    660    +  no     0.8  0.975  no   no 
+1.8.1   Bat   29264  FAIL  NC_010438  gene  E                       8    1    1  25441  25662  25735  25959    222    +  no   0.975  0.975  no   no 
+1.9.1   Bat   29264  FAIL  NC_010438  CDS   envelope_protein        9    1    1  25441  25662  25735  25959    222    +  no   0.975  0.975  no   no 
+1.10.1  Bat   29264  FAIL  NC_010438  gene  M                      10    1    1  25669  26352  25966  26721    684    +  no   0.975    0.9  no   no 
+1.11.1  Bat   29264  FAIL  NC_010438  CDS   membrane_protein       11    1    1  25669  26352  25966  26721    684    +  no   0.975    0.9  no   no 
+1.12.1  Bat   29264  FAIL  NC_010438  gene  N                      12    1    1  26391  27840  26770  28038   1450    +  no     0.4   0.05  no   no 
+1.13.1  Bat   29264  FAIL  NC_010438  CDS   nucleocapsid_protein   13    1    1  26391  27840  26770  28038   1450    +  no     0.4   0.05  no   no 
+1.14.1  Bat   29264  FAIL  NC_010438  gene  ORF7                   14    1    1  27363  28961  27788  28534   1599    +  no   0.975    0.6  no   no 
+1.15.1  Bat   29264  FAIL  NC_010438  CDS   hypothetical_protein   15    1    1  27363  28961  27788  28534   1599    +  no   0.975    0.6  no   no 

@@ -1,0 +1,36 @@
+# copy of input fasta file saved in:                                               darth-frank.vadr.in.fa
+# esl-seqstat -a output for input fasta file saved in:                             darth-frank.vadr.seqstat
+# Stockholm file for >= 1 possible frameshifts for CDS.1.1 for model NC_010438 saved in:   darth-frank.vadr.NC_010438.CDS.1.1.frameshift.stk
+# Stockholm file for >= 1 possible frameshifts for CDS.1.2 for model NC_010438 saved in:   darth-frank.vadr.NC_010438.CDS.1.2.frameshift.stk
+# Stockholm file for >= 1 possible frameshifts for CDS.2.1 for model NC_010438 saved in:   darth-frank.vadr.NC_010438.CDS.2.1.frameshift.stk
+# Stockholm file for >= 1 possible frameshifts for CDS.3.1 for model NC_010438 saved in:   darth-frank.vadr.NC_010438.CDS.3.1.frameshift.stk
+# Stockholm file for >= 1 possible frameshifts for CDS.4.1 for model NC_010438 saved in:   darth-frank.vadr.NC_010438.CDS.4.1.frameshift.stk
+# Stockholm file for >= 1 possible frameshifts for CDS.5.1 for model NC_010438 saved in:   darth-frank.vadr.NC_010438.CDS.5.1.frameshift.stk
+# Stockholm file for >= 1 possible frameshifts for CDS.7.1 for model NC_010438 saved in:   darth-frank.vadr.NC_010438.CDS.7.1.frameshift.stk
+# model NC_010438 feature gene#1 predicted seqs saved in:                                  darth-frank.vadr.NC_010438.gene.1.fa
+# model NC_010438 feature CDS#1 predicted seqs saved in:                                   darth-frank.vadr.NC_010438.CDS.1.fa
+# model NC_010438 feature CDS#2 predicted seqs saved in:                                   darth-frank.vadr.NC_010438.CDS.2.fa
+# model NC_010438 feature gene#2 predicted seqs saved in:                                  darth-frank.vadr.NC_010438.gene.2.fa
+# model NC_010438 feature CDS#3 predicted seqs saved in:                                   darth-frank.vadr.NC_010438.CDS.3.fa
+# model NC_010438 feature gene#3 predicted seqs saved in:                                  darth-frank.vadr.NC_010438.gene.3.fa
+# model NC_010438 feature CDS#4 predicted seqs saved in:                                   darth-frank.vadr.NC_010438.CDS.4.fa
+# model NC_010438 feature gene#4 predicted seqs saved in:                                  darth-frank.vadr.NC_010438.gene.4.fa
+# model NC_010438 feature CDS#5 predicted seqs saved in:                                   darth-frank.vadr.NC_010438.CDS.5.fa
+# model NC_010438 feature gene#5 predicted seqs saved in:                                  darth-frank.vadr.NC_010438.gene.5.fa
+# model NC_010438 feature CDS#6 predicted seqs saved in:                                   darth-frank.vadr.NC_010438.CDS.6.fa
+# model NC_010438 feature gene#6 predicted seqs saved in:                                  darth-frank.vadr.NC_010438.gene.6.fa
+# model NC_010438 feature CDS#7 predicted seqs saved in:                                   darth-frank.vadr.NC_010438.CDS.7.fa
+# model NC_010438 feature gene#7 predicted seqs saved in:                                  darth-frank.vadr.NC_010438.gene.7.fa
+# model NC_010438 feature CDS#8 predicted seqs saved in:                                   darth-frank.vadr.NC_010438.CDS.8.fa
+# per-sequence tabular annotation summary file saved in:                                   darth-frank.vadr.sqa
+# per-sequence tabular classification summary file saved in:                               darth-frank.vadr.sqc
+# per-feature tabular summary file saved in:                                               darth-frank.vadr.ftr
+# per-model-segment tabular summary file saved in:                                         darth-frank.vadr.sgm
+# per-model tabular summary file saved in:                                                 darth-frank.vadr.mdl
+# per-alert tabular summary file saved in:                                                 darth-frank.vadr.alt
+# alert count tabular summary file saved in:                                               darth-frank.vadr.alc
+# 5 column feature table output for passing sequences saved in:                            darth-frank.vadr.pass.tbl
+# 5 column feature table output for failing sequences saved in:                            darth-frank.vadr.fail.tbl
+# list of passing sequences saved in:                                                      darth-frank.vadr.pass.list
+# list of failing sequences saved in:                                                      darth-frank.vadr.fail.list
+# list of alerts in the feature tables saved in:                                           darth-frank.vadr.alt.list
