@@ -1,0 +1,6 @@
+Bootstrap docker
+From: taltman/vadr:1.1
+
+%post
+	apt-get -y update
+	apt-get -y install emboss
