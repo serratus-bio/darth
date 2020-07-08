@@ -1,29 +1,12 @@
-# README #
+# Darth #
 
-This README would normally document whatever steps are necessary to get your application up and running.
+Darth is a container for running VADR and other tools for annotating novel coronavirus genomes with no near neighbor. 
 
-### What is this repository for? ###
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
 
-### How do I get set up? ###
 
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
+### Installation ###
 
-### Contribution guidelines ###
+Note: For VADR to run smoothly, the container should be provided with at least 64G of RAM.
 
-* Writing tests
-* Code review
-* Other guidelines
-
-### Who do I talk to? ###
-
-* Repo owner or admin
-* Other community or team contact
+Do the following with Docker:

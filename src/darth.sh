@@ -71,8 +71,8 @@ cmscan \
 
 ## Self-align:
 
-bowtie2-build $genome_path $data_dir/self_align
-bowtie2 --very-sensitive-local -x $data_dir/self_align -U $reads_path \
+bowtie2-build $genome_path $output_dir/self_align
+bowtie2 --very-sensitive-local -x $output_dir/self_align -U $reads_path \
     | samtools view -S -b \
     | samtools sort \
 	       > $output_dir/self-align-sorted.bam
