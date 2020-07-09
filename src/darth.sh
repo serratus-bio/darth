@@ -34,16 +34,16 @@ run_vadr
 
 ## This is an ugly hack. Try to use VADR's install of blastn to just search RdRP gene, and use coordinates to figure out the orientation:
 
-if egrep REVCOMPLEM $output_dir/$output_name.vadr.alc
+if egrep REVCOMPLEM $output_dir/$accession.vadr.alc
 then
-    new_genome_path="$output_dir/${accession}_revcomp.fna"
+    new_genome_path="$output_parent_dir/${accession}_revcomp.fna"
     revseq -sequence $genome_path -outseq $new_genome_path
     genome_path="$new_genome_path"
     rm -r $output_dir 
     run_vadr
 else
-    cp $genome_path $output_dir/`basename $genome_path`
-    genome_path="$output_dir/`basename $genome_path`"
+    cp $genome_path $output_parent_dir/${accession}.fna
+    genome_path="$output_parent_dir/${accession}.fna"
 fi
 
 ## Generate alternate gene calls:
@@ -59,7 +59,6 @@ cm_db_size="`awk -v genome_length=$genome_length 'BEGIN{print genome_length*2/10
 cmscan \
     -Z $cm_db_size \
     --cut_ga \
-    --rfam \
     --nohmmonly \
     --tblout $output_dir/cmscan-utrs.tblout \
     --fmt 2 \

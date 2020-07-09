@@ -197,6 +197,11 @@ get-frankie: pre-data-setup
 	cd data
 	wget https://github.com/ababaian/serratus/wiki/assets/Fr4NK.fa
 
+get-frankie-reads:
+	cd data
+	prefetch ERR2756788
+	fastq-dump --split-e ERR2756788
+
 get-bobbie: pre-data-setup
 	cd data
 	wget "http://data.cab.spbu.ru/index.php/s/Zkwb9SoCsqXTQEG/download?path=%2F&files=SRR9211913.tar.bz2" -O SRR9211913.tar.bz2
@@ -223,7 +228,30 @@ get-rfam-cov-utrs: pre-data-setup
 	wget ftp://ftp.ebi.ac.uk/pub/databases/Rfam/14.2/covid-19/coronavirus.cm
 	cmpress coronavirus.cm
 
+### Docker Automation
+docker-build:
+	sudo docker build -t taltman/darth:maul .
+
+docker-run:
+	sudo docker run -it --rm -v $(CURDIR):/input -v $(CURDIR)/out:/output taltman/darth:maul bash 
+
+docker-deploy:
+	sudo docker login
+	sudo docker push taltman/darth:maul
+
 ### Tests:
+
+test-docker-frankie:
+	cp data/Fr4NK.fa out/
+	sudo docker run -it --rm -m 13GB -v $(CURDIR)/out:/output taltman/darth:maul \
+		darth.sh \
+			ERR2756788 \
+			/output/Fr4NK.fa \
+			/output/ERR2756788.fastq.gz \
+			/root/data \
+			/output \
+			2
+
 
 annot-vigor4-wuhan-sarscov2:
 	mkdir -p test/sarscov2
