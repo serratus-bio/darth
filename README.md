@@ -17,3 +17,16 @@ You can fetch the following repo from DockerHub: `taltman/darth:maul`
 For an example of running darth against Frankie, run the following:
 
 make test-docker-frankie
+
+#### Arguments to darth.sh
+
+1. SRA accession
+2. Path to input genome FASTA file
+3. Path to single (compressed) FASTQ file with all of the reads corresponding to the SRA accession
+4. Data directory (leave this as "/root/data")
+5. Top-level output directory path. This directory is the one that VADR will try to
+create its own output directory inside of. So this directory should
+already exist, and will be mounted by Docker for the image to access
+in read/write mode. In the Makefile example, this is also where the genome and FASTQ
+files are placed.
+6. Number of CPUs for various programs within Darth to utilize
