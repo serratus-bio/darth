@@ -7,7 +7,7 @@ Workdir /root
 ### Install apt dependencies
 
 RUN DEBIAN_FRONTEND=noninteractive apt-get update
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -y wget emboss samtools parallel bcftools tabix make infernal bowtie2 
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y wget emboss samtools parallel bcftools tabix make infernal bowtie2 hmmer
 
 ### Install third-party software:
 RUN mkdir /root/third-party
@@ -34,6 +34,10 @@ RUN cd /root/data \
        && wget ftp://ftp.ebi.ac.uk/pub/databases/Rfam/14.2/covid-19/coronavirus.cm \
        && cmpress coronavirus.cm
 
+## Pfam models specifically for CoV:
+RUN cd /root/data \
+    && wget ftp://ftp.ebi.ac.uk/pub/databases/Pfam/releases/Pfam_SARS-CoV-2_2.0/Pfam-A.SARS-CoV-2.hmm \
+    && hmmpress Pfam-A.SARS-CoV-2.hmm
 
 ### Set up environment to ease running code from running container:
 
@@ -44,4 +48,5 @@ COPY src/tbl2gff.awk /usr/local/bin/
 ## Set script permissions:
 RUN chmod 755 /usr/local/bin/darth.sh
 
-ENV PATH $PATH:/root/third-party/FragGeneScan1.31
+## Forgot to include in vadr image path to Bio-Easel scripts/miniapps, doing so now:
+ENV PATH $PATH:/root/third-party/FragGeneScan1.31:/root/vadr/Bio-Easel/src/easel/miniapps

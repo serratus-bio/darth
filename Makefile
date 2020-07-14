@@ -26,7 +26,7 @@ TMPDIR ?= /tmp
 
 ### Local definitions:
 
-export PATH := $(PATH):$(CURDIR)/third-party/sratoolkit.2.10.5-ubuntu64/bin:$(CURDIR)/third-party/FragGeneScan1.31:$(CURDIR)/third-party/VIGOR4/vigor-4.1.20200430-122814-96585d9/bin:$(CURDIR)/third-party/vadr
+export PATH := $(PATH):$(CURDIR)/third-party/sratoolkit.2.10.5-ubuntu64/bin:$(CURDIR)/third-party/FragGeneScan1.31:$(CURDIR)/third-party/VIGOR4/vigor-4.1.20200430-122814-96585d9/bin:$(CURDIR)/third-party/vadr:$(CURDIR)/third-party/vadr/Bio-Easel/src/easel/miniapps
 
 ## VADR:
 export VADRINSTALLDIR := $(HOME)/repos/darth/third-party/vadr
@@ -228,6 +228,12 @@ get-rfam-cov-utrs: pre-data-setup
 	wget ftp://ftp.ebi.ac.uk/pub/databases/Rfam/14.2/covid-19/coronavirus.cm
 	cmpress coronavirus.cm
 
+get-cov3ma: pre-data-setup
+	cd data
+	aws s3 cp s3://serratus-public/seq/cov3ma/cov3ma.fa .
+	esl-sfetch --index cov3ma.fa
+
+
 ### Docker Automation
 docker-build:
 	sudo docker build -t taltman/darth:maul .
@@ -243,7 +249,7 @@ docker-deploy:
 
 test-docker-frankie:
 	cp data/Fr4NK.fa out/
-	sudo docker run -it --rm -m 13GB -v $(CURDIR)/out:/output taltman/darth:maul \
+	sudo docker run -it --rm -m 13GB -v $(CURDIR)/out:/output taltman/darth:test \
 		darth.sh \
 			ERR2756788 \
 			/output/Fr4NK.fa \
@@ -251,6 +257,27 @@ test-docker-frankie:
 			/root/data \
 			/output \
 			2
+
+test-taxon-prot-gen:
+	mkdir -p test/taxon-prots
+	cd test/taxon-prots
+	for acc in NC_005831.2 NC_003436.1 NC_003045.1 NC_001846.1 NC_045512.2 NC_001451.1 NC_010646.1 NC_046965.1 NC_011547.1 NC_011549.1 NC_016994.1 NC_026812.1 NC_022787.1 NC_007447.1
+	do
+		echo "Processing genome $$acc:"
+		mkdir -p $$acc
+		pushd $$acc
+		esl-sfetch $(CURDIR)/data/cov3ma.fa $$acc > $$acc.fa
+		sudo docker run -it --rm -m 13GB -v `pwd`:/output taltman/darth:maul \
+			darth.sh \
+				$$acc \
+				/output/$$acc.fa \
+				foo \
+				/root/data \
+				/output \
+				2
+		popd
+		echo "... complete!"
+	done
 
 
 annot-vigor4-wuhan-sarscov2:
@@ -503,6 +530,23 @@ bowtie2-self-align:
 	| samtools sort \
 	> /tmp/bt2-self-align-very-sensitive-local-sorted.bam
 
+#### NCBI submission preparation:
+
+set-up-Fr4NK:
+	mkdir -p test/Fr4NK-submission-test
+	cd test/Fr4NK-submission-test
+	aws s3 cp s3://serratus-public/assemblies/contigs/ERR2756788.coronaspades.gene_clusters.checkv_filtered.fa .
 #### Utils
 env:
 	env
+
+## Use lsblk to find a suitable ephemeral drive to use, then call it like:
+## SWAP_DEVICE=/dev/nvme1n1 SWAP_SIZE=400G make set-up-swap
+set-up-swap:
+	sudo mkdir -p /media/ephemeral
+	sudo mkfs.ext4 $(SWAP_DEVICE)
+	sudo mount $(SWAP_DEVICE) /media/ephemeral
+	sudo fallocate -l $(SWAP_SIZE) /media/ephemeral/swapfile
+	sudo chmod 600 /media/ephemeral/swapfile
+	sudo mkswap /media/ephemeral/swapfile
+	sudo swapon /media/ephemeral/swapfile
