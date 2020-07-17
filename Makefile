@@ -258,23 +258,26 @@ test-docker-frankie:
 			/output \
 			2
 
+## Not in file: NC_046965.1
 test-taxon-prot-gen:
 	mkdir -p test/taxon-prots
 	cd test/taxon-prots
-	for acc in NC_005831.2 NC_003436.1 NC_003045.1 NC_001846.1 NC_045512.2 NC_001451.1 NC_010646.1 NC_046965.1 NC_011547.1 NC_011549.1 NC_016994.1 NC_026812.1 NC_022787.1 NC_007447.1
+	for acc in NC_011547.1 NC_011549.1 NC_016994.1 NC_026812.1 NC_022787.1 NC_007447.1
 	do
 		echo "Processing genome $$acc:"
 		mkdir -p $$acc
 		pushd $$acc
-		esl-sfetch $(CURDIR)/data/cov3ma.fa $$acc > $$acc.fa
-		sudo docker run -it --rm -m 13GB -v `pwd`:/output taltman/darth:maul \
-			darth.sh \
-				$$acc \
-				/output/$$acc.fa \
-				foo \
-				/root/data \
-				/output \
-				2
+		if esl-sfetch $(CURDIR)/data/cov3ma.fa $$acc > $$acc.fa
+		then
+			sudo docker run -it --rm -m 13GB -v `pwd`:/output taltman/darth:maul \
+				darth.sh \
+					$$acc \
+					/output/$$acc.fa \
+					foo \
+					/root/data \
+					/output \
+					2
+		fi
 		popd
 		echo "... complete!"
 	done

@@ -55,7 +55,7 @@ transeq -clean -frame F \
 hmmsearch --cut_ga \
 	  -A match-alignments.sto \
 	  --domtblout hmmsearch-matches.txt \
-	  /root/data/Pfam-A.SARS-CoV-2.hmm \
+	  $data_dir/Pfam-A.SARS-CoV-2.hmm \
 	  orf1ab_3-frame-translated.fasta \
 	  > hmmsearch-out.txt
 esl-sfetch --index orf1ab_3-frame-translated.fasta
