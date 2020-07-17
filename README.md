@@ -22,7 +22,7 @@ make test-docker-frankie
 
 1. SRA accession
 2. Path to input genome FASTA file
-3. Path to single (compressed) FASTQ file with all of the reads corresponding to the SRA accession
+3. Path to single (compressed) FASTQ file with all of the reads corresponding to the SRA accession. Or enter "none" if no reads
 4. Data directory (leave this as "/root/data")
 5. Top-level output directory path. This directory is the one that VADR will try to
 create its own output directory inside of. So this directory should
