@@ -109,18 +109,22 @@ pushd $output_parent_dir/read-analysis > /dev/null
 
 ## Self-align:
 
-bowtie2-build $genome_path self_align
-bowtie2 --very-sensitive-local -x self_align -U $reads_path \
-    | samtools view -S -b \
-    | samtools sort \
-	       > self-align-sorted.bam
+if [ "$reads_path" != "none" ]
+then
 
-## Generate variant data:
-bcftools mpileup -Ou \
-	 -f $genome_path \
-	 self-align-sorted.bam \
-    | bcftools call -mv --ploidy 1 -Ob -o calls.bcf
+	bowtie2-build $genome_path self_align
+	bowtie2 --very-sensitive-local -x self_align -U $reads_path \
+	    | samtools view -S -b \
+	    | samtools sort \
+		       > self-align-sorted.bam
+	
+	## Generate variant data:
+	bcftools mpileup -Ou \
+		 -f $genome_path \
+		 self-align-sorted.bam \
+	    | bcftools call -mv --ploidy 1 -Ob -o calls.bcf
 
+fi
 
 ### Generate convenience files for genome browsers like IGV and JBrowse:
 
@@ -138,10 +142,13 @@ tbl2gff.awk -v seqid="$accession" \
 	    $tbl_file \
 	    > $accession.vadr.gff
 
-samtools index self-align-sorted.bam
-bcftools view calls.bcf > calls.vcf
-bgzip calls.vcf 
-tabix -p vcf calls.vcf.gz 
-samtools faidx $genome_path
+if [ "$reads_path" != "none" ]
+then
+	samtools index self-align-sorted.bam
+	bcftools view calls.bcf > calls.vcf
+	bgzip calls.vcf 
+	tabix -p vcf calls.vcf.gz 
+	samtools faidx $genome_path
+fi
 
 popd > /dev/null
