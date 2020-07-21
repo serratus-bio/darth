@@ -258,11 +258,26 @@ test-docker-frankie:
 			/output \
 			2
 
+test-sample:
+	mkdir -p test/test-sample/
+	cd test/test-sample
+	aws s3 cp s3://serratus-public/assemblies/contigs/SRR9156994.coronaspades.gene_clusters.checkv_filtered.fa .
+	cd ..
+	sudo docker run -it --rm -m 13GB -v $$PWD/test-sample:/output taltman/darth:test \
+		darth.sh \
+			SRR9156994 \
+			/output/SRR9156994.coronaspades.gene_clusters.checkv_filtered.fa \
+			none \
+			/root/data \
+			/output \
+			2
+
+
 ## Not in file: NC_046965.1
 test-taxon-prot-gen:
 	mkdir -p test/taxon-prots
 	cd test/taxon-prots
-	for acc in NC_011547.1 NC_011549.1 NC_016994.1 NC_026812.1 NC_022787.1 NC_007447.1
+	for acc in AY394999.1
 	do
 		echo "Processing genome $$acc:"
 		mkdir -p $$acc
@@ -273,7 +288,7 @@ test-taxon-prot-gen:
 				darth.sh \
 					$$acc \
 					/output/$$acc.fa \
-					foo \
+					none \
 					/root/data \
 					/output \
 					2
@@ -282,6 +297,19 @@ test-taxon-prot-gen:
 		echo "... complete!"
 	done
 
+check-runs-missing-annots:
+	mkdir -p test/missing-annots
+	cd test/missing-annots
+	for acc in AY395000.1 HQ850618.1 KC008600.1 KM609205.1 KR265759.1 KR822424.1 KX219798.1 KX236009.1 KX236011.1 KX252780.1 KX302862.1 KY983586.1 MG021451.1 MG428702.1 MK071620.1 MN535737.1 MN692789.1 MN794188.1 MT263013.1 
+	do
+		aws s3 cp s3://serratus-public/seq/cov5/annotations/$$acc.cov5_cg.fa.darth.tar.gz .
+		tar xzf $$acc.cov5_cg.fa.darth.tar.gz
+	done
+	for acc in NC_034976 NC_046956
+	do
+		aws s3 cp s3://serratus-public/seq/cov5/annotations/$$acc.fa.toro5_cg.fa.darth.tar.gz .
+		tar xzf $$acc.fa.toro5_cg.fa.darth.tar.gz
+	done
 
 annot-vigor4-wuhan-sarscov2:
 	mkdir -p test/sarscov2

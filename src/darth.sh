@@ -73,6 +73,20 @@ awk 'NR==FNR && !/^#/ { pfam[($1 "/" $18 "-" $19)] = $4; next }
 	 > alignments.fasta
 popd > /dev/null
 
+## Convert VADR output to GFF
+
+if [ -s $output_dir/$accession.vadr.pass.tbl ]
+then
+    tbl_file=$output_dir/$accession.vadr.pass.tbl
+else
+    tbl_file=$output_dir/$accession.vadr.fail.tbl
+fi
+
+tbl2gff.awk -v seqid="$accession" \
+	    -v prog=vadr \
+	    $tbl_file \
+	    > $accession.vadr.gff
+
 
 ## Generate alternate gene calls:
 mkdir -p $output_parent_dir/FragGeneScan
@@ -124,26 +138,9 @@ then
 		 self-align-sorted.bam \
 	    | bcftools call -mv --ploidy 1 -Ob -o calls.bcf
 
-fi
 
-### Generate convenience files for genome browsers like IGV and JBrowse:
+## Generate convenience files for genome browsers like IGV and JBrowse:
 
-## Convert VADR output to GFF
-
-if [ -s $output_dir/$accession.vadr.pass.tbl ]
-then
-    tbl_file=$output_dir/$accession.vadr.pass.tbl
-else
-    tbl_file=$output_dir/$accession.vadr.fail.tbl
-fi
-
-tbl2gff.awk -v seqid="$accession" \
-	    -v prog=vadr \
-	    $tbl_file \
-	    > $accession.vadr.gff
-
-if [ "$reads_path" != "none" ]
-then
 	samtools index self-align-sorted.bam
 	bcftools view calls.bcf > calls.vcf
 	bgzip calls.vcf 
