@@ -297,6 +297,64 @@ test-taxon-prot-gen:
 		echo "... complete!"
 	done
 
+test-assemblies:
+	mkdir -p test/assemblies
+	cd test/assemblies
+	for acc in ERR2756788 ##ERR4145311 SRR8617922 SRR8389793 SRR5447152
+	do
+		echo "Processing genome $$acc:"
+		mkdir -p $$acc
+		pushd $$acc
+		if aws s3 cp s3://serratus-rayan/master_table_assemblies/$$acc.fa .
+		then
+			time sudo docker run -it --rm -m 13GB -v `pwd`:/output taltman/darth:maul \
+				darth.sh \
+					$$acc \
+					/output/$$acc.fa \
+					none \
+					/root/data \
+					/output \
+					2
+		fi
+		popd
+		echo "... complete!"
+	done
+
+test-assembly-canonicalization:
+	mkdir -p test/canonicalization
+	cd test/canonicalization
+	for acc in ERR2756788 ERR4145311 SRR8617922 SRR8389793 SRR5447152
+	do
+		echo "Processing genome $$acc:"
+		mkdir -p $$acc
+		pushd $$acc
+		if aws s3 cp s3://serratus-rayan/master_table_assemblies/$$acc.fa .
+		then
+			$(CURDIR)/src/canonicalize_contigs.sh $$PWD/$$acc.fa $$PWD $(CURDIR)/data
+		fi
+		popd
+		echo "... complete!"
+	done
+
+
+sars-cov-2-pfam-annot:
+	mkdir -p test/sars-cov-2-pfam
+	cd test/sars-cov-2-pfam
+	transeq -clean -frame 6 \
+		-sequence $(CURDIR)/data/GCF_009858895.2_ASM985889v3_genomic.fna \
+		-outseq sars-cov-2-trans.fasta
+	hmmsearch --cut_ga \
+		-A match-alignments.sto \
+		--domtblout hmmsearch-matches.txt \
+		$(CURDIR)/data/Pfam-A.SARS-CoV-2.hmm \
+		sars-cov-2-trans.fasta \
+		> hmmstdout.txt
+	egrep -v "^#" hmmsearch-matches.txt \
+		| awk -v OFS="\t" '{ print $$4, $$1, $$18, $$19 }' \
+		| sort -k3,3n \
+		| awk -v OFS="\t" '{ print NR, $$1}' \
+		> $(CURDIR)/data/sars-cov-2-pfam-order.txt 
+
 check-runs-missing-annots:
 	mkdir -p test/missing-annots
 	cd test/missing-annots

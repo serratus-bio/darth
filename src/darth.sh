@@ -22,43 +22,55 @@ function run_vadr() {
 	--mkey corona \
 	--mxsize 64000 \
 	-f \
-	$genome_path \
+	--keep \
+	transeq/canonical.fna \
 	$output_dir
 
+    ## if VADR crashes, we re-run with the --skip_pv option:
+    ### https://github.com/nawrockie/vadr/issues/21
+    
 }
 
 output_dir="$output_parent_dir/$accession"
 
+## Canonicalize the assembly contigs:
+canonicalize_contigs.sh $genome_path $output_parent_dir $data_dir
+
 ## Try running VADR:
 run_vadr
 
-## This is an ugly hack. Try to use VADR's install of blastn to just search RdRP gene, and use coordinates to figure out the orientation:
+# ## This is an ugly hack. Try to use VADR's install of blastn to just search RdRP gene, and use coordinates to figure out the orientation:
+# ## This will NOT work! Need to stop punting and align to closest genome.
+# if egrep REVCOMPLEM $output_dir/$accession.vadr.alc
+# then
+#     new_genome_path="$output_parent_dir/${accession}_revcomp.fna"
+#     revseq -sequence $genome_path -outseq $new_genome_path
+#     genome_path="$new_genome_path"
+#     rm -r $output_dir 
+#     run_vadr
+# else
+#     cp $genome_path $output_parent_dir/${accession}.fna
+#     genome_path="$output_parent_dir/${accession}.fna"
+# fi
 
-if egrep REVCOMPLEM $output_dir/$accession.vadr.alc
-then
-    new_genome_path="$output_parent_dir/${accession}_revcomp.fna"
-    revseq -sequence $genome_path -outseq $new_genome_path
-    genome_path="$new_genome_path"
-    rm -r $output_dir 
-    run_vadr
-else
-    cp $genome_path $output_parent_dir/${accession}.fna
-    genome_path="$output_parent_dir/${accession}.fna"
-fi
 
 ## Annotate ORF1ab with Pfam domains:
 mkdir -p $output_parent_dir/pfam
 pushd $output_parent_dir/pfam > /dev/null
+
 transeq -clean -frame F \
 	-sequence $output_dir/*.CDS.1.fa \
 	-outseq orf1ab_3-frame-translated.fasta
+
 hmmsearch --cut_ga \
 	  -A match-alignments.sto \
 	  --domtblout hmmsearch-matches.txt \
 	  $data_dir/Pfam-A.SARS-CoV-2.hmm \
 	  orf1ab_3-frame-translated.fasta \
 	  > hmmsearch-out.txt
+
 esl-sfetch --index orf1ab_3-frame-translated.fasta
+
 grep -v "^#" hmmsearch-matches.txt \
     | awk '{ print $4"/"$20"-"$21, $20, $21, $1}' \
     | esl-sfetch -Cf orf1ab_3-frame-translated.fasta - \
@@ -71,6 +83,7 @@ awk 'NR==FNR && !/^#/ { pfam[($1 "/" $18 "-" $19)] = $4; next }
 	 hmmsearch-matches.txt \
 	 match-alignments.sto \
 	 > alignments.fasta
+
 popd > /dev/null
 
 ## Convert VADR output to GFF
