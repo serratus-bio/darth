@@ -56,6 +56,7 @@ SARS-CoV-2 genome, but more can easily be built):
 5. Create two-column file associating Pfam model name with the sort order
 
 Now, analyze the assembly:
+
 1. Obtain sequence
 2. Use transeq to get 6-frame translation of all contigs
 3. Use Pfam to annotate translations
