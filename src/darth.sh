@@ -71,7 +71,7 @@ run_vadr
 mkdir -p $output_parent_dir/pfam
 pushd $output_parent_dir/pfam > /dev/null
 
-if [ `ls $output_dir/*.CDS.1.fa | wc -l` == 1 ]
+if [ `ls $output_dir | grep -c CDS.1.fa` == 1 ] && [ `egrep -c "^>" $output_dir/*.CDS.1.fa` == 1 ]
 then
     transeq -clean -frame F \
 	    -sequence $output_dir/*.CDS.1.fa \
@@ -98,7 +98,8 @@ then
 	 hmmsearch-matches.txt \
 	 match-alignments.sto \
 	 > alignments.fasta
-
+else
+    echo "Multiple orf 1ab genes; not performing domain annotation." > /dev/stderr
 fi
 
 popd > /dev/null

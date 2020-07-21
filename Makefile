@@ -300,7 +300,7 @@ test-taxon-prot-gen:
 test-assemblies:
 	mkdir -p test/assemblies
 	cd test/assemblies
-	for acc in SRR8389793 ##ERR2756788 ERR4145311 SRR8617922  SRR5447152
+	for acc in ERR2756788  ## SRR8617922 ##ERR4145311   SRR5447152 ## SRR8389793 
 	do
 		echo "Processing genome $$acc:"
 		mkdir -p $$acc
