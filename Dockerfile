@@ -7,7 +7,7 @@ Workdir /root
 ### Install apt dependencies
 
 RUN DEBIAN_FRONTEND=noninteractive apt-get update
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -y wget emboss samtools parallel bcftools tabix make infernal bowtie2 hmmer
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y wget emboss samtools parallel bcftools tabix make infernal bowtie2 hmmer gawk
 
 ### Install third-party software:
 RUN mkdir /root/third-party
@@ -44,6 +44,8 @@ RUN cd /root/data \
 ## Staging scripts:
 COPY src/darth.sh /usr/local/bin/
 COPY src/tbl2gff.awk /usr/local/bin/
+COPY src/canonicalize_contigs.sh /usr/local/bin/
+COPY src/sars-cov-2-pfam-order.txt /root/data
 
 ## Set script permissions:
 RUN chmod 755 /usr/local/bin/darth.sh

@@ -17,15 +17,28 @@ export PATH=$PATH:$DIR
 
 function run_vadr() {
 
+    ## if the first run fails, try re-running without the protein alignment,
+    ## to see if that dodges issue #205:
+
     v-annotate.pl \
 	--mdir $data_dir/vadr-models-corona-1.1-1 \
 	--mkey corona \
 	--mxsize 64000 \
 	-f \
 	--keep \
-	transeq/canonical.fna \
-	$output_dir
+	$output_parent_dir/transeq/canonical.fna \
+	$output_dir \
+    || v-annotate.pl \
+	   --mdir $data_dir/vadr-models-corona-1.1-1 \
+	   --mkey corona \
+	   --mxsize 64000 \
+	   -f \
+	   --keep \
+	   --skip_pv \
+	   $output_parent_dir/transeq/canonical.fna \
+	   $output_dir	
 
+    
     ## if VADR crashes, we re-run with the --skip_pv option:
     ### https://github.com/nawrockie/vadr/issues/21
     
@@ -58,31 +71,35 @@ run_vadr
 mkdir -p $output_parent_dir/pfam
 pushd $output_parent_dir/pfam > /dev/null
 
-transeq -clean -frame F \
-	-sequence $output_dir/*.CDS.1.fa \
-	-outseq orf1ab_3-frame-translated.fasta
+if [ `ls $output_dir/*.CDS.1.fa | wc -l` == 1 ]
+then
+    transeq -clean -frame F \
+	    -sequence $output_dir/*.CDS.1.fa \
+	    -outseq orf1ab_3-frame-translated.fasta
 
-hmmsearch --cut_ga \
-	  -A match-alignments.sto \
-	  --domtblout hmmsearch-matches.txt \
-	  $data_dir/Pfam-A.SARS-CoV-2.hmm \
-	  orf1ab_3-frame-translated.fasta \
-	  > hmmsearch-out.txt
+    hmmsearch --cut_ga \
+	      -A match-alignments.sto \
+	      --domtblout hmmsearch-matches.txt \
+	      $data_dir/Pfam-A.SARS-CoV-2.hmm \
+	      orf1ab_3-frame-translated.fasta \
+	      > hmmsearch-out.txt
 
-esl-sfetch --index orf1ab_3-frame-translated.fasta
+    esl-sfetch --index orf1ab_3-frame-translated.fasta
 
-grep -v "^#" hmmsearch-matches.txt \
-    | awk '{ print $4"/"$20"-"$21, $20, $21, $1}' \
-    | esl-sfetch -Cf orf1ab_3-frame-translated.fasta - \
-		 > orf1ab_domains.fasta
-
-## Pull out the alignments:
-awk 'NR==FNR && !/^#/ { pfam[($1 "/" $18 "-" $19)] = $4; next }
-     /^\/\/$/         { print ">" pfam[id]; print line; line=""; next }
-     !/^#/ && !/^$/   { id = $1; line=line $2; next }' \
+    grep -v "^#" hmmsearch-matches.txt \
+	| awk '{ print $4"/"$20"-"$21, $20, $21, $1}' \
+	| esl-sfetch -Cf orf1ab_3-frame-translated.fasta - \
+		     > orf1ab_domains.fasta
+    
+    ## Pull out the alignments:
+    awk 'NR==FNR && !/^#/ { pfam[($1 "/" $18 "-" $19)] = $4; next }
+    	 /^\/\/$/         { print ">" pfam[id]; print line; line=""; next }
+     	 !/^#/ && !/^$/   { id = $1; line=line $2; next }' \
 	 hmmsearch-matches.txt \
 	 match-alignments.sto \
 	 > alignments.fasta
+
+fi
 
 popd > /dev/null
 
