@@ -93,8 +93,8 @@ then
     
     ## Pull out the alignments:
     awk 'NR==FNR && !/^#/ { pfam[($1 "/" $18 "-" $19)] = $4; next }
-    	 /^\/\/$/         { print ">" pfam[id]; print line; line=""; next }
-     	 !/^#/ && !/^$/   { id = $1; line=line $2; next }' \
+     	 !/^#/ && !/^$/   { id = $1; line[id] = line[id] $2; next }
+    	 END              { for(id in line) print ">" pfam[id] " " id; print line[id]}' \
 	 hmmsearch-matches.txt \
 	 match-alignments.sto \
 	 > alignments.fasta
